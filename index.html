@@ -63,27 +63,50 @@
       </section>
     );
 
-    const Services = () => (
-      <section id="servicios" className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-playfair font-bold text-center mb-16 text-gray-800">Nuestros Servicios</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gray-50 p-8 rounded-lg hover:shadow-lg transition-shadow">
-              <h3 className="text-xl font-playfair font-semibold mb-3 text-gray-800">Muebles a Medida</h3>
-              <p className="text-gray-600 font-montserrat">Diseño y fabricación de piezas exclusivas adaptadas a tus necesidades y estilo de vida.</p>
-            </div>
-            <div className="bg-gray-50 p-8 rounded-lg hover:shadow-lg transition-shadow">
-              <h3 className="text-xl font-playfair font-semibold mb-3 text-gray-800">Asesoría Personalizada</h3>
-              <p className="text-gray-600 font-montserrat">Sesiones individualizadas para definir materiales, estilos y soluciones para tu espacio.</p>
-            </div>
-            <div className="bg-gray-50 p-8 rounded-lg hover:shadow-lg transition-shadow">
-              <h3 className="text-xl font-playfair font-semibold mb-3 text-gray-800">Renders 3D</h3>
-              <p className="text-gray-600 font-montserrat">Visualización previa de cómo quedarán los muebles en tu espacio antes de la fabricación.</p>
-            </div>
-          </div>
+const Services = () => (
+  <section id="servicios" className="py-20 bg-gradient-to-b from-white via-stone-50 to-amber-50">
+    <div className="container mx-auto px-4 max-w-6xl">
+      <h2 className="text-4xl font-playfair font-bold text-center mb-16 text-stone-900">
+        Nuestros Servicios
+      </h2>
+      
+      <div className="grid md:grid-cols-3 gap-10">
+        {/* Servicio 1 */}
+        <div className="bg-white border border-stone-200 rounded-xl shadow-sm hover:shadow-md transition-all p-8">
+          <h3 className="text-xl font-playfair font-semibold mb-4 text-amber-800">
+            Muebles a Medida
+          </h3>
+          <p className="text-stone-700 font-montserrat leading-relaxed">
+            Creamos piezas únicas que se adaptan a tu espacio, tu estilo y tus necesidades. 
+            Cada mueble es diseñado exclusivamente para vos, con acabados artesanales y materiales de primera calidad.
+          </p>
         </div>
-      </section>
-    );
+
+        {/* Servicio 2 */}
+        <div className="bg-white border border-stone-200 rounded-xl shadow-sm hover:shadow-md transition-all p-8">
+          <h3 className="text-xl font-playfair font-semibold mb-4 text-amber-800">
+            Asesoría Personalizada
+          </h3>
+          <p className="text-stone-700 font-montserrat leading-relaxed">
+            Te acompañamos en cada decisión de diseño, materiales y distribución, asegurándonos 
+            de que el resultado final refleje tu personalidad y aporte armonía a tu hogar.
+          </p>
+        </div>
+
+        {/* Servicio 3 */}
+        <div className="bg-white border border-stone-200 rounded-xl shadow-sm hover:shadow-md transition-all p-8">
+          <h3 className="text-xl font-playfair font-semibold mb-4 text-amber-800">
+            Renders 3D
+          </h3>
+          <p className="text-stone-700 font-montserrat leading-relaxed">
+            Antes de fabricar, te mostramos visualizaciones realistas en 3D de tus muebles. 
+            Así podés ver cómo quedarán en tu espacio, asegurando que cada detalle sea perfecto antes de avanzar.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+);
 
     const Gallery = () => {
       const galleryImages = [
@@ -114,36 +137,232 @@
       );
     };
 
-    const Process = () => (
-      <section id="proceso" className="py-20 bg-gray-100">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-playfair font-bold text-center mb-16 text-gray-800">Nuestro Proceso</h2>
-          <p className="text-center text-gray-700 font-montserrat">Consulta inicial, diseño conceptual, selección de materiales, fabricación e instalación.</p>
-        </div>
-      </section>
-    );
+const Process = () => (
+  <section id="proceso" className="py-20 bg-gradient-to-b from-white via-stone-50 to-amber-50">
+    <div className="container mx-auto px-4 max-w-4xl">
+      <h2 className="text-4xl font-playfair font-bold text-center mb-16 text-stone-900">
+        Nuestro Proceso
+      </h2>
 
-    const ContactForm = () => (
-      <section id="contacto" className="py-20 bg-white">
-        <div className="container mx-auto px-4 max-w-2xl">
-          <h2 className="text-3xl font-bold mb-8 text-center">Contáctanos</h2>
-          <form action="https://formspree.io/f/xkgzlzld" method="POST" className="bg-white p-6 rounded-lg shadow-md">
-            <input className="border w-full p-2 mb-3" name="nombre" placeholder="Nombre" required />
-            <input className="border w-full p-2 mb-3" name="apellido" placeholder="Apellido" required />
-            <input className="border w-full p-2 mb-3" name="telefono" placeholder="Teléfono" required />
-            <input className="border w-full p-2 mb-3" type="email" name="email" placeholder="Email" required />
-            <textarea className="border w-full p-2 mb-3" name="consulta" placeholder="Consulta" rows="4" required></textarea>
-            <button className="bg-amber-800 hover:bg-amber-700 text-white px-6 py-3 rounded w-full">Enviar</button>
-          </form>
-        </div>
-      </section>
-    );
+      <div className="relative">
+        {/* Línea vertical central */}
+        <div className="absolute left-4 md:left-1/2 h-full w-1 bg-amber-200 transform md:-translate-x-1/2"></div>
 
-    const Footer = () => (
-      <footer className="bg-gray-900 text-gray-300 py-12 text-center">
-        <p className="font-montserrat text-sm">&copy; {new Date().getFullYear()} Paradisse Design. Todos los derechos reservados.</p>
-      </footer>
-    );
+        {/* Paso 1 */}
+        <div className="relative mb-14 md:flex md:items-start">
+          <div className="bg-amber-700 text-white rounded-full h-10 w-10 flex items-center justify-center font-bold z-10 md:mr-6 md:ml-0 ml-2">
+            1
+          </div>
+          <div className="bg-white rounded-xl shadow-md p-6 border border-stone-200 md:w-1/2">
+            <h3 className="text-xl font-playfair font-semibold text-stone-900 mb-2">
+              Consulta Inicial
+            </h3>
+            <p className="text-stone-700 font-montserrat leading-relaxed">
+              Comenzamos escuchando tus necesidades y expectativas. Analizamos el espacio, el estilo de tu hogar y el uso que le darás al mueble. 
+              Esta etapa nos permite entender quién eres y qué soluciones personalizadas se adaptan mejor a tu estilo de vida.
+            </p>
+          </div>
+        </div>
+
+        {/* Paso 2 */}
+        <div className="relative mb-14 md:flex md:items-start md:flex-row-reverse">
+          <div className="bg-amber-700 text-white rounded-full h-10 w-10 flex items-center justify-center font-bold z-10 md:ml-6 ml-2">
+            2
+          </div>
+          <div className="bg-white rounded-xl shadow-md p-6 border border-stone-200 md:w-1/2">
+            <h3 className="text-xl font-playfair font-semibold text-stone-900 mb-2">
+              Diseño Conceptual
+            </h3>
+            <p className="text-stone-700 font-montserrat leading-relaxed">
+              Elaboramos bocetos y renders digitales que muestran cómo se verá tu mueble en el espacio real. 
+              Aquí ajustamos detalles de estilo, proporciones y funcionalidad para que el resultado sea exactamente lo que imaginas.
+            </p>
+          </div>
+        </div>
+
+        {/* Paso 3 */}
+        <div className="relative mb-14 md:flex md:items-start">
+          <div className="bg-amber-700 text-white rounded-full h-10 w-10 flex items-center justify-center font-bold z-10 md:mr-6 ml-2">
+            3
+          </div>
+          <div className="bg-white rounded-xl shadow-md p-6 border border-stone-200 md:w-1/2">
+            <h3 className="text-xl font-playfair font-semibold text-stone-900 mb-2">
+              Selección de Materiales
+            </h3>
+            <p className="text-stone-700 font-montserrat leading-relaxed">
+              Te asesoramos en la elección de maderas, tapizados, colores y acabados. 
+              Nos enfocamos en lograr un balance entre estética, durabilidad y sensaciones, 
+              creando piezas que transmitan calidez y calidad artesanal.
+            </p>
+          </div>
+        </div>
+
+        {/* Paso 4 */}
+        <div className="relative mb-14 md:flex md:items-start md:flex-row-reverse">
+          <div className="bg-amber-700 text-white rounded-full h-10 w-10 flex items-center justify-center font-bold z-10 md:ml-6 ml-2">
+            4
+          </div>
+          <div className="bg-white rounded-xl shadow-md p-6 border border-stone-200 md:w-1/2">
+            <h3 className="text-xl font-playfair font-semibold text-stone-900 mb-2">
+              Fabricación Artesanal
+            </h3>
+            <p className="text-stone-700 font-montserrat leading-relaxed">
+              En nuestro taller, artesanos especializados trabajan cada pieza con precisión y dedicación. 
+              Utilizamos técnicas tradicionales combinadas con tecnología moderna para garantizar la mejor calidad y durabilidad.
+            </p>
+          </div>
+        </div>
+
+        {/* Paso 5 */}
+        <div className="relative md:flex md:items-start">
+          <div className="bg-amber-700 text-white rounded-full h-10 w-10 flex items-center justify-center font-bold z-10 md:mr-6 ml-2">
+            5
+          </div>
+          <div className="bg-white rounded-xl shadow-md p-6 border border-stone-200 md:w-1/2">
+            <h3 className="text-xl font-playfair font-semibold text-stone-900 mb-2">
+              Instalación y Entrega
+            </h3>
+            <p className="text-stone-700 font-montserrat leading-relaxed">
+              Transportamos e instalamos tu mueble en el lugar indicado, asegurando un acabado impecable. 
+              Nuestro compromiso es que disfrutes de una experiencia completa, desde la idea inicial hasta el último detalle en tu hogar.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+const ContactForm = () => (
+  <section id="contacto" className="py-20 bg-gradient-to-b from-amber-50 via-stone-100 to-white">
+    <div className="container mx-auto px-4 max-w-2xl">
+      <h2 className="text-4xl font-playfair font-bold mb-10 text-center text-stone-900">
+        Contáctanos
+      </h2>
+
+      <form 
+        action="https://formspree.io/f/xkgzlzld" 
+        method="POST" 
+        className="bg-white shadow-xl rounded-xl p-10 space-y-6 border border-stone-200"
+      >
+        {/* Nombre */}
+        <div>
+          <label className="block text-stone-800 font-medium mb-2">Nombre</label>
+          <input 
+            type="text" 
+            name="nombre" 
+            required 
+            className="w-full border border-stone-300 rounded-lg p-3 bg-amber-50/50 focus:ring-2 focus:ring-amber-600 focus:border-amber-600 outline-none"
+            placeholder="Tu nombre"
+          />
+        </div>
+
+        {/* Apellido */}
+        <div>
+          <label className="block text-stone-800 font-medium mb-2">Apellido</label>
+          <input 
+            type="text" 
+            name="apellido" 
+            required 
+            className="w-full border border-stone-300 rounded-lg p-3 bg-amber-50/50 focus:ring-2 focus:ring-amber-600 focus:border-amber-600 outline-none"
+            placeholder="Tu apellido"
+          />
+        </div>
+
+        {/* Celular */}
+        <div>
+          <label className="block text-stone-800 font-medium mb-2">Celular</label>
+          <input 
+            type="tel" 
+            name="celular" 
+            required 
+            className="w-full border border-stone-300 rounded-lg p-3 bg-amber-50/50 focus:ring-2 focus:ring-amber-600 focus:border-amber-600 outline-none"
+            placeholder="+54 9 11 1234 5678"
+          />
+        </div>
+
+        {/* Email */}
+        <div>
+          <label className="block text-stone-800 font-medium mb-2">Email</label>
+          <input 
+            type="email" 
+            name="email" 
+            required 
+            className="w-full border border-stone-300 rounded-lg p-3 bg-amber-50/50 focus:ring-2 focus:ring-amber-600 focus:border-amber-600 outline-none"
+            placeholder="tu@email.com"
+          />
+        </div>
+
+        {/* Consulta */}
+        <div>
+          <label className="block text-stone-800 font-medium mb-2">Consulta</label>
+          <textarea 
+            name="consulta" 
+            rows="4" 
+            required 
+            className="w-full border border-stone-300 rounded-lg p-3 bg-amber-50/50 focus:ring-2 focus:ring-amber-600 focus:border-amber-600 outline-none"
+            placeholder="Escribe tu consulta aquí..."
+          ></textarea>
+        </div>
+
+        {/* Botón */}
+        <button 
+          type="submit" 
+          className="w-full bg-amber-700 hover:bg-amber-800 text-white font-semibold py-3 rounded-lg transition-all shadow-md hover:shadow-lg"
+        >
+          ✉️ Enviar Consulta
+        </button>
+      </form>
+    </div>
+  </section>
+);
+
+const Footer = () => (
+  <footer className="bg-gradient-to-b from-[#e7ddcf] to-[#f3ece2] border-t border-black/10">
+    <div className="max-w-5xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      
+      {/* Marca */}
+      <div className="flex items-center gap-3 font-semibold text-[#4e3a2e]">
+        <div className="w-9 h-9 rounded-xl bg-[#6b4f3b] shadow-md relative"> </div>
+        <span>Paradisse Design</span>
+      </div>
+
+      {/* Botones */}
+      <nav className="flex gap-3">
+        <a
+          href="https://www.instagram.com/paradisse.design"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#6b4f3b] text-white shadow hover:-translate-y-0.5 hover:shadow-lg transition"
+        >
+          {/* Ícono Instagram (SVG inline) */}
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+            <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.6"/>
+            <circle cx="12" cy="12" r="3.8" stroke="currentColor" strokeWidth="1.6"/>
+            <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
+          </svg>
+          <span className="hidden sm:inline">Instagram</span>
+        </a>
+
+        <a
+          href="https://wa.me/5491130890681"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#8c6e54] text-white shadow hover:-translate-y-0.5 hover:shadow-lg transition"
+        >
+          {/* Ícono WhatsApp (SVG inline) */}
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+            <path d="M20.5 11.7a8.5 8.5 0 0 1-12.9 7.3L3.5 21l2.1-4.1A8.5 8.5 0 1 1 20.5 11.7Z"
+                  stroke="currentColor" strokeWidth="1.6"/>
+            <path d="M9.2 8.7c-.3.6-.6 1.9 1.1 3.7 1.8 1.9 3.2 1.7 3.8 1.5l.5-.2c.3-.1.6 0 .8.2l1 .9c.2.2.2.5.1.8-.2.6-1 1.6-2.6 1.6-2 0-4.5-1.5-6-3.1-1.5-1.5-3.1-4-3.1-6 0-1.6 1-2.4 1.6-2.6.3-.1.6 0 .8.1l.9 1c.2.2.3.5.2.8l-.1.5Z"
+                  fill="currentColor"/>
+          </svg>
+          <span className="hidden sm:inline">WhatsApp</span>
+        </a>
+      </nav>
+    </div>
+  </footer>
+);
 
     const App = () => (
       <div className="font-montserrat">
@@ -152,7 +371,7 @@
         <Services />
         <Gallery />
         <Process />
-        <ContactForm /> {/* ✅ ahora el formulario se muestra */}
+        <ContactForm />
         <Footer />
       </div>
     );
