@@ -14,7 +14,7 @@
       scroll-behavior: smooth;
     }
     .hero-pattern {
-      background-image: url('images/fonini.jpg'); /* ✅ corregido */
+      background-image: url('images/fonini.jpg');
       background-size: cover;
       background-position: center;
     }
@@ -45,11 +45,6 @@
               <li><a href="#contacto" className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat">Contacto</a></li>
             </ul>
           </nav>
-          <button className="md:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
         </div>
       </header>
     );
@@ -74,29 +69,14 @@
           <h2 className="text-3xl md:text-4xl font-playfair font-bold text-center mb-16 text-gray-800">Nuestros Servicios</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-gray-50 p-8 rounded-lg hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mb-6">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-amber-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                </svg>
-              </div>
               <h3 className="text-xl font-playfair font-semibold mb-3 text-gray-800">Muebles a Medida</h3>
               <p className="text-gray-600 font-montserrat">Diseño y fabricación de piezas exclusivas adaptadas a tus necesidades y estilo de vida.</p>
             </div>
             <div className="bg-gray-50 p-8 rounded-lg hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mb-6">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-amber-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-playfire font-semibold mb-3 text-gray-800">Asesoría Personalizada</h3>
+              <h3 className="text-xl font-playfair font-semibold mb-3 text-gray-800">Asesoría Personalizada</h3>
               <p className="text-gray-600 font-montserrat">Sesiones individualizadas para definir materiales, estilos y soluciones para tu espacio.</p>
             </div>
             <div className="bg-gray-50 p-8 rounded-lg hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mb-6">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-amber-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3V4M12 3V4M15 3V4M9 21V20M12 21V20M15 21V20M20 9H4M20 14H4M8 8V16M16 8V16M7 17H17C18.1046 17 19 16.1046 19 15V7C19 5.89543 18.1046 5 17 5H7C5.89543 5 5 5.89543 5 7V15C5 16.1046 5.89543 17 7 17Z" />
-                </svg>
-              </div>
               <h3 className="text-xl font-playfair font-semibold mb-3 text-gray-800">Renders 3D</h3>
               <p className="text-gray-600 font-montserrat">Visualización previa de cómo quedarán los muebles en tu espacio antes de la fabricación.</p>
             </div>
@@ -105,36 +85,65 @@
       </section>
     );
 
-  const Gallery = () => {
-  const galleryImages = [
-    { src: 'images/biblioteca.jpg', alt: 'Biblioteca moderna de nogal con detalles dorados integrada en sala de estar contemporánea' },
-    { src: 'images/com.jpg', alt: 'Comedor con mesa de roble macizo y sillas tapizadas en cuero color tierra' },
-    { src: 'images/escritorio.jpg', alt: 'Escritorio flotante con iluminación LED integrada para home office minimalista' },
-    { src: 'images/cocina.jpg', alt: 'Cocina moderna con isla central de mármol y gabinetes de madera lacada' },
-    { src: 'images/tv.jpg', alt: 'Mueble TV de diseño minimalista con paneles de madera y detalles en metal' },
-    { src: 'images/dormitorio.jpg', alt: 'Dormitorio principal con cabecera artesanal y mesitas de noche personalizadas' }
-  ];
+    const Gallery = () => {
+      const galleryImages = [
+        { src: 'images/biblioteca.jpg', alt: 'Biblioteca moderna de nogal con detalles dorados integrada en sala de estar contemporánea' },
+        { src: 'images/com.jpg', alt: 'Comedor con mesa de roble macizo y sillas tapizadas en cuero color tierra' },
+        { src: 'images/escritorio.jpg', alt: 'Escritorio flotante con iluminación LED integrada para home office minimalista' },
+        { src: 'images/cocina.jpg', alt: 'Cocina moderna con isla central de mármol y gabinetes de madera lacada' },
+        { src: 'images/tv.jpg', alt: 'Mueble TV de diseño minimalista con paneles de madera y detalles en metal' },
+        { src: 'images/dormitorio.jpg', alt: 'Dormitorio principal con cabecera artesanal y mesitas de noche personalizadas' }
+      ];
 
-  return (
-    <section id="galeria" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-playfair font-bold text-center mb-16 text-gray-800">Galería</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {galleryImages.map((image, index) => (
-            <div key={index} className="gallery-item relative overflow-hidden rounded-lg group">
-              <img src={image.src} alt={image.alt} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-              <div className="gallery-overlay absolute inset-0 bg-black bg-opacity-50 opacity-0 transition-opacity duration-300 flex items-center justify-center">
-                <span className="text-white font-montserrat text-center px-4">{image.alt.substr(0, 120)}{image.alt.length > 120 ? '...' : ''}</span>
-              </div>
+      return (
+        <section id="galeria" className="py-20 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-playfair font-bold text-center mb-16 text-gray-800">Galería</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {galleryImages.map((image, index) => (
+                <div key={index} className="gallery-item relative overflow-hidden rounded-lg group">
+                  <img src={image.src} alt={image.alt} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="gallery-overlay absolute inset-0 bg-black bg-opacity-50 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                    <span className="text-white font-montserrat text-center px-4">{image.alt.substr(0, 120)}{image.alt.length > 120 ? '...' : ''}</span>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
+          </div>
+        </section>
+      );
+    };
 
-// (el resto del código sigue igual con ContactForm, Process y Footer...)
+    const Process = () => (
+      <section id="proceso" className="py-20 bg-gray-100">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-playfair font-bold text-center mb-16 text-gray-800">Nuestro Proceso</h2>
+          <p className="text-center text-gray-700 font-montserrat">Consulta inicial, diseño conceptual, selección de materiales, fabricación e instalación.</p>
+        </div>
+      </section>
+    );
+
+    const ContactForm = () => (
+      <section id="contacto" className="py-20 bg-white">
+        <div className="container mx-auto px-4 max-w-2xl">
+          <h2 className="text-3xl font-bold mb-8 text-center">Contáctanos</h2>
+          <form action="https://formspree.io/f/xkgzlzld" method="POST" className="bg-white p-6 rounded-lg shadow-md">
+            <input className="border w-full p-2 mb-3" name="nombre" placeholder="Nombre" required />
+            <input className="border w-full p-2 mb-3" name="apellido" placeholder="Apellido" required />
+            <input className="border w-full p-2 mb-3" name="telefono" placeholder="Teléfono" required />
+            <input className="border w-full p-2 mb-3" type="email" name="email" placeholder="Email" required />
+            <textarea className="border w-full p-2 mb-3" name="consulta" placeholder="Consulta" rows="4" required></textarea>
+            <button className="bg-amber-800 hover:bg-amber-700 text-white px-6 py-3 rounded w-full">Enviar</button>
+          </form>
+        </div>
+      </section>
+    );
+
+    const Footer = () => (
+      <footer className="bg-gray-900 text-gray-300 py-12 text-center">
+        <p className="font-montserrat text-sm">&copy; {new Date().getFullYear()} Paradisse Design. Todos los derechos reservados.</p>
+      </footer>
+    );
 
     const App = () => (
       <div className="font-montserrat">
@@ -142,7 +151,9 @@
         <Hero />
         <Services />
         <Gallery />
-        {/* Proceso, ContactForm y Footer van aquí */}
+        <Process />
+        <ContactForm /> {/* ✅ ahora el formulario se muestra */}
+        <Footer />
       </div>
     );
 
