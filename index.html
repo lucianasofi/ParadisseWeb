@@ -14,7 +14,7 @@
       scroll-behavior: smooth;
     }
     .hero-pattern {
-      background-image: url(img/fonini.jpg);
+      background-image: url('fonini.jpg'); /* ✅ corregido */
       background-size: cover;
       background-position: center;
     }
@@ -110,31 +110,14 @@
 
   const Gallery = () => {
   const galleryImages = [
-    { 
-      src: 'img/biblioteca.jpg', // Ruta local
-      alt: 'Biblioteca moderna de nogal con detalles dorados integrada en sala de estar contemporánea' 
-    },
-    { 
-      src: 'img/com.jpg', // Ruta local
-      alt: 'Comedor con mesa de roble macizo y sillas tapizadas en cuero color tierra' 
-    },
-    { 
-      src: 'img/escritorio.jpg', // Ruta local
-      alt: 'Escritorio flotante con iluminación LED integrada para home office minimalista' 
-    },
-    { 
-      src: 'img/cocina.jpg', // Ruta local
-      alt: 'Cocina moderna con isla central de mármol y gabinetes de madera lacada' 
-    },
-    { 
-      src: 'img/tv.jpg', // Ruta local
-      alt: 'Mueble TV de diseño minimalista con paneles de madera y detalles en metal' 
-    },
-    { 
-      src: 'img/dormitorio.jpg', // Ruta local
-      alt: 'Dormitorio principal con cabecera artesanal y mesitas de noche personalizadas' 
-    }
+    { src: 'biblioteca.jpg', alt: 'Biblioteca moderna de nogal con detalles dorados integrada en sala de estar contemporánea' },
+    { src: 'com.jpg', alt: 'Comedor con mesa de roble macizo y sillas tapizadas en cuero color tierra' },
+    { src: 'escritorio.jpg', alt: 'Escritorio flotante con iluminación LED integrada para home office minimalista' },
+    { src: 'cocina.jpg', alt: 'Cocina moderna con isla central de mármol y gabinetes de madera lacada' },
+    { src: 'tv.jpg', alt: 'Mueble TV de diseño minimalista con paneles de madera y detalles en metal' },
+    { src: 'dormitorio.jpg', alt: 'Dormitorio principal con cabecera artesanal y mesitas de noche personalizadas' }
   ];
+
 
   return (
     <section id="galeria" className="py-20 bg-gray-50">
