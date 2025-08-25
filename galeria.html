@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paradisse Design | Galería de Proyectos Exclusivos</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      .hide-on-scroll {
+        transition: transform 0.1s, opacity 0.3s;
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+      }
+      .show-on-scroll {
+        transition: transform 0.1s, opacity 0.3s;
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+      :root {
+        --sw7036: #d6cfc4;
+        --sw7036-dark: #b8b1a1;
+        --sw7036-light: #ede8e2;
+        --sw7036-accent: #a89c87;
+        --sw7036-contrast: #6e6657;
+      }
+      body {
+        background-color: var(--sw7036-light);
+        color: var(--sw7036-contrast);
+      }
+      .hero-pattern {
+        background-image: url("images/fonini.jpg");
+        background-size: cover;
+        background-position: center;
+        background-color: var(--sw7036);
+      }
+      header,
+      .bg-white,
+      .bg-gradient-to-b,
+      .bg-amber-50,
+      .bg-stone-50,
+      .bg-gray-50 {
+        background-color: var(--sw7036-light) !important;
+      }
+      .text-gray-800,
+      .text-stone-900,
+      .text-amber-800,
+      .text-stone-700,
+      .text-gray-700,
+      .text-\[\#4e3a2e\],
+      .text-\[\#6b4f3b\],
+      .text-\[\#8c6e54\] {
+        color: var(--sw7036-contrast) !important;
+      }
+      .border-stone-200,
+      .border-amber-200,
+      .border-\[\#a38f62\] {
+        border-color: var(--sw7036-accent) !important;
+      }
+      .bg-amber-800,
+      .bg-amber-700,
+      .bg-\[\#6b4f3b\],
+      .bg-\[\#8c6e54\] {
+        background-color: var(--sw7036-accent) !important;
+      }
+      .hover\:bg-amber-700:hover,
+      .hover\:bg-amber-800:hover,
+      .hover\:bg-\[\#6b4f3b\]:hover {
+        background-color: var(--sw7036-contrast) !important;
+      }
+      .bg-amber-50,
+      .bg-stone-100 {
+        background-color: var(--sw7036) !important;
+      }
+      .bg-amber-50\/50 {
+        background-color: rgba(214, 207, 196, 0.5) !important;
+      }
+      .focus\:ring-amber-600:focus,
+      .focus\:border-amber-600:focus {
+        border-color: var(--sw7036-accent) !important;
+        box-shadow: 0 0 0 2px var(--sw7036-accent);
+      }
+      .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+      }
+      .gallery-overlay {
+        opacity: 0;
+        transition: opacity 0.3s;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+      input:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--sw7036-accent);
+      }
+      .rounded-xl,
+      .rounded-lg {
+        border-radius: 0.75rem;
+      }
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 1s ease-out, transform 1s ease-out;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .slide-left {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: opacity 1s ease-out, transform 1s ease-out;
+      }
+      .slide-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .slide-right {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: opacity 1s ease-out, transform 1s ease-out;
+      }
+      .slide-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .zoom-in {
+        opacity: 0;
+        transform: scale(0.95);
+        transition: opacity 1s ease-out, transform 1s ease-out;
+      }
+      .zoom-in.visible {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .bounce:hover {
+        animation: bounce 0.6s;
+      }
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+
+      .carousel-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 0.75rem;
+        box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.15),
+          0 4px 10px -2px rgba(0, 0, 0, 0.08);
+        border: 1px solid var(--sw7036-accent);
+      }
+      .carousel-inner {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      }
+      .carousel-item {
+        min-width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .carousel-item img,
+      .carousel-item video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .carousel-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(107, 79, 59, 0.85);
+        color: white;
+        padding: 0.75rem 1rem;
+        border-radius: 9999px;
+        cursor: pointer;
+        z-index: 10;
+        transition: background-color 0.3s, transform 0.2s;
+      }
+      .carousel-button:hover {
+        background-color: var(--sw7036-contrast);
+        transform: translateY(-50%) scale(1.05);
+      }
+      .carousel-button.left {
+        left: 1rem;
+      }
+      .carousel-button.right {
+        right: 1rem;
+      }
+      .carousel-dots {
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 0.5rem;
+        z-index: 10;
+      }
+      .carousel-dot {
+        width: 0.75rem;
+        height: 0.75rem;
+        background-color: rgba(255, 255, 255, 0.6);
+        border-radius: 9999px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+      .carousel-dot.active {
+        background-color: var(--sw7036-accent);
+        transform: scale(1.2);
+      }
+
+      .video-grid-item {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        border-radius: 0.75rem;
+        box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.15),
+          0 4px 10px -2px rgba(0, 0, 0, 0.08);
+        border: 1px solid var(--sw7036-accent);
+        transition: transform 0.3s ease-in-out;
+      }
+      .video-grid-item:hover {
+        transform: translateY(-5px);
+      }
+      .video-grid-item video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const { useState, useEffect, useRef } = React;
+
+      // Header
+      const Header = () => (
+        <header className="fixed w-full bg-white bg-opacity-90 z-50 shadow-sm fade-in">
+          <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 className="text-2xl font-playfair font-semibold text-gray-800 tracking-wider flex items-center gap-2">
+              <img
+                src="images/logo_pd.png"
+                alt="Paradisse Design Logo"
+                className="w-8 h-8 object-contain ml-2"
+              />
+              PARADISSE DESIGN
+            </h1>
+            <nav className="hidden md:block">
+              <ul className="flex space-x-8">
+                <li>
+                  <a
+                    href="servicios.html"
+                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                  >
+                    Servicios
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="galeria.html"
+                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                  >
+                    Galería
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="catalogo.html"
+                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                  >
+                    Catálogo
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="proceso.html"
+                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                  >
+                    Proceso
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="index.html#contacto"
+                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                  >
+                    Contacto
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#disena"
+                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                  >
+                    Diseña con Paradisse
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </header>
+      );
+      // Footer
+      const Footer = () => (
+        <footer className="bg-gradient-to-b from-[#e7ddcf] to-[#f3ece2] border-t border-black/10 fade-in">
+          <div className="max-w-5xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3 font-semibold text-[#4e3a2e]">
+              <img
+                src="images/logo_pd.png"
+                alt="Paradisse Design Logo"
+                className="w-6 h-6 object-contain mr-2"
+              />
+              <span>Paradisse Design</span>
+            </div>
+            <nav className="flex gap-3">
+              <a
+                href="https://www.instagram.com/paradisse.design"
+                target="_blank"
+                className="px-4 py-2 rounded-full bg-[#6b4f3b] text-white shadow transition bounce"
+              >
+                Instagram
+              </a>
+              <a
+                href="https://wa.me/5491130890681"
+                target="_blank"
+                className="px-4 py-2 rounded-full bg-[#8c6e54] text-white shadow transition bounce"
+              >
+                WhatsApp
+              </a>
+            </nav>
+          </div>
+        </footer>
+      );
+
+      const Carousel = ({ items, intervalTime = 3000, type = "image" }) => {
+        const [currentIndex, setCurrentIndex] = useState(0);
+        const carouselInnerRef = useRef(null);
+
+        useEffect(() => {
+          const interval = setInterval(() => {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
+          }, intervalTime);
+          return () => clearInterval(interval);
+        }, [items.length, intervalTime]);
+
+        useEffect(() => {
+          if (carouselInnerRef.current) {
+            carouselInnerRef.current.style.transform = `translateX(-${
+              currentIndex * 100
+            }%)`;
+          }
+        }, [currentIndex]);
+
+        const goToNext = () => {
+          setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
+        };
+
+        const goToPrev = () => {
+          setCurrentIndex(
+            (prevIndex) => (prevIndex - 1 + items.length) % items.length
+          );
+        };
+
+        const goToSlide = (index) => {
+          setCurrentIndex(index);
+        };
+
+        return (
+          <div className="carousel-container w-full max-w-4xl mx-auto h-96 md:h-[500px] relative zoom-in">
+            <div className="carousel-inner h-full" ref={carouselInnerRef}>
+              {items.map((item, index) => (
+                <div key={index} className="carousel-item h-full">
+                  {type === "image" ? (
+                    <img
+                      src={item.src}
+                      alt={item.alt}
+                      className="object-cover w-full h-full"
+                    />
+                  ) : (
+                    <video controls className="object-cover w-full h-full">
+                      <source src={item.src} type="video/mp4" />
+                      Tu navegador no soporta la etiqueta de video.
+                    </video>
+                  )}
+                  <div className="absolute bottom-4 left-0 right-0 text-center text-white text-sm md:text-base bg-black bg-opacity-50 py-2 px-4">
+                    {item.alt}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Navegacion botones */}
+            <button onClick={goToPrev} className="carousel-button left">
+              &lt;
+            </button>
+            <button onClick={goToNext} className="carousel-button right">
+              &gt;
+            </button>
+
+            {/* Indicadores */}
+            <div className="carousel-dots">
+              {items.map((_, index) => (
+                <span
+                  key={index}
+                  className={`carousel-dot ${
+                    index === currentIndex ? "active" : ""
+                  }`}
+                  onClick={() => goToSlide(index)}
+                ></span>
+              ))}
+            </div>
+          </div>
+        );
+      };
+
+      // Main Gallery
+      const GalleryPage = () => {
+        // Data para Render Images Carousel
+        const renderImages = [
+          {
+            src: "images/renders/render1.jpg",
+            alt: "Render de cocina moderna con isla central",
+          },
+          {
+            src: "images/renders/render2.jpg",
+            alt: "Render de dormitorio principal con cabecero de madera",
+          },
+          {
+            src: "images/renders/render3.jpg",
+            alt: "Render de sala de estar con mobiliario minimalista",
+          },
+          {
+            src: "images/renders/render4.jpg",
+            alt: "Render de baño de lujo con acabados en mármol",
+          },
+          {
+            src: "images/renders/render5.jpg",
+            alt: "Render de oficina en casa con escritorio integrado",
+          },
+        ];
+
+        // Data para Real Images Carousel
+        const realImages = [
+          {
+            src: "images/reales/real1.jpg",
+            alt: "Foto real de biblioteca a medida instalada",
+          },
+          {
+            src: "images/reales/real2.jpg",
+            alt: "Foto real de comedor con mesa de roble y sillas tapizadas",
+          },
+          {
+            src: "images/reales/real3.jpg",
+            alt: "Foto real de mueble de TV con paneles de madera",
+          },
+          {
+            src: "images/reales/real4.jpg",
+            alt: "Foto real de armario empotrado con puertas correderas",
+          },
+          {
+            src: "images/reales/real5.jpg",
+            alt: "Foto real de recibidor con consola flotante",
+          },
+        ];
+
+        // Data para Project Videos
+        const projectVideos = [
+          {
+            src: "videos/video1.mp4",
+            alt: "Video de presentación de proyecto de cocina",
+          },
+          {
+            src: "videos/video2.mp4",
+            alt: "Video timelapse de instalación de mueble",
+          },
+          {
+            src: "videos/video3.mp4",
+            alt: "Video tour virtual de un apartamento amueblado",
+          },
+        ];
+
+        // Data para Static Images Grid
+        const staticImages = [
+          {
+            src: "images/estaticas/estatica1.jpg",
+            alt: "Detalle de acabado en madera noble y herrajes dorados",
+          },
+          {
+            src: "images/estaticas/estatica2.jpg",
+            alt: "Textura de tapizado de terciopelo en un sofá de diseño",
+          },
+          {
+            src: "images/estaticas/estatica3.jpg",
+            alt: "Mesa de centro con superficie de mármol pulido y base metálica",
+          },
+          {
+            src: "images/estaticas/estatica4.jpg",
+            alt: "Iluminación ambiental destacando un mueble de diseño",
+          },
+          {
+            src: "images/estaticas/estatica5.jpg",
+            alt: "Combinación de materiales: cuero, madera y metal en un sillón",
+          },
+          {
+            src: "images/estaticas/estatica6.jpg",
+            alt: "Vista de un espacio con mobiliario integrado y armonioso",
+          },
+        ];
+
+        return (
+          <div className="font-montserrat">
+            <Header />
+            <section className="py-20 bg-gradient-to-b from-white via-stone-50 to-amber-50 fade-in pt-32">
+              <div className="container mx-auto px-4 max-w-6xl">
+                <h2 className="text-4xl md:text-5xl font-playfair font-bold text-center mb-16 text-stone-900 slide-left">
+                  Nuestra Galería de Proyectos Exclusivos
+                </h2>
+
+                {/* Sección de Carruseles Horizontales (Renders y Reales) */}
+                <div className="mb-20 p-6 bg-white rounded-xl shadow-xl border border-stone-200">
+                  {" "}
+                  <h3 className="text-3xl font-playfair font-bold text-center mb-10 text-amber-800 slide-right">
+                    Explora Nuestros Diseños
+                  </h3>
+                  <p className="text-stone-700 font-montserrat leading-relaxed text-center mb-12 slide-left max-w-3xl mx-auto">
+                    Sumérgete en la visión de tus futuros espacios con nuestros
+                    renders 3D fotorrealistas y déjate inspirar por la
+                    excelencia de nuestros proyectos reales terminados.
+                  </p>
+                  {/* Contenedor Flexbox para los carruseles */}
+                  <div className="flex flex-col md:flex-row gap-8 justify-center items-start">
+                    {/* Carrusel de Renders */}
+                    <div className="w-full md:w-1/2 flex-shrink-0">
+                      <h4 className="text-2xl font-playfair font-semibold text-center mb-4 text-stone-900">
+                        Renders 3D
+                      </h4>
+                      <Carousel
+                        items={renderImages}
+                        type="image"
+                        intervalTime={3000}
+                      />
+                    </div>
+
+                    {/* Carrusel de Proyectos Reales */}
+                    <div className="w-full md:w-1/2 flex-shrink-0">
+                      <h4 className="text-2xl font-playfair font-semibold text-center mb-4 text-stone-900">
+                        Proyectos Reales
+                      </h4>
+                      <Carousel
+                        items={realImages}
+                        type="image"
+                        intervalTime={4000}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Sección de Videos (Ahora en un Grid) */}
+                <div className="mb-20 p-6 bg-white rounded-xl shadow-xl border border-stone-200">
+                  {" "}
+                  {/* Added container for luxury feel */}
+                  <h3 className="text-3xl font-playfair font-bold text-center mb-10 text-amber-800 slide-right">
+                    Videos de Proyectos
+                  </h3>
+                  <p className="text-stone-700 font-montserrat leading-relaxed text-center mb-12 slide-left max-w-3xl mx-auto">
+                    Descubre el proceso creativo y el resultado final de
+                    nuestros trabajos a través de videos inmersivos.
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {projectVideos.map((video, index) => (
+                      <div
+                        key={index}
+                        className="video-grid-item rounded-xl shadow-lg border border-stone-200 overflow-hidden group zoom-in"
+                      >
+                        <video controls className="w-full h-full object-cover">
+                          <source src={video.src} type="video/mp4" />
+                          Tu navegador no soporta la etiqueta de video.
+                        </video>
+                        <div className="absolute bottom-0 left-0 right-0 text-center text-white text-sm md:text-base bg-black bg-opacity-50 py-2 px-4">
+                          {video.alt}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Sección de Imágenes Estáticas: Inspiración y Detalles */}
+                <section
+                  id="inspiracion"
+                  className="py-10 p-6 bg-white rounded-xl shadow-xl border border-stone-200 fade-in"
+                >
+                  {" "}
+                  {/* Added container for luxury feel */}
+                  <h3 className="text-3xl font-playfair font-bold text-center mb-10 text-amber-800 slide-left">
+                    Inspiración y Detalles
+                  </h3>
+                  <p className="text-stone-700 font-montserrat leading-relaxed text-center mb-12 slide-right max-w-3xl mx-auto">
+                    Una selección curada de imágenes que capturan la esencia de
+                    nuestros diseños, la riqueza de los materiales y la atención
+                    al detalle que nos distingue en cada pieza.
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {staticImages.map((image, index) => (
+                      <div
+                        key={index}
+                        className="gallery-item relative overflow-hidden rounded-xl shadow-lg border border-stone-200 group zoom-in"
+                      >
+                        <img
+                          src={image.src}
+                          alt={image.alt}
+                          className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <div className="gallery-overlay absolute inset-0 flex items-center justify-center p-4">
+                          <span className="text-white font-montserrat text-center text-lg">
+                            {image.alt}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                <div className="text-center mt-20 fade-in p-8 bg-amber-50/50 rounded-xl shadow-lg border border-amber-200">
+                  {" "}
+                  <h3 className="text-3xl md:text-4xl font-playfair font-bold text-stone-900 mb-6">
+                    ¿Te inspiraste en la excelencia?
+                  </h3>
+                  <p className="text-lg md:text-xl text-stone-700 font-montserrat mb-8 max-w-2xl mx-auto">
+                    Permítenos transformar tu visión en una realidad tangible.
+                    Contáctanos hoy mismo para una consulta personalizada y
+                    comienza a diseñar el espacio de tus sueños.
+                  </p>
+                  <a
+                    href="index.html#contacto"
+                    className="inline-block bg-amber-800 hover:bg-amber-700 text-white px-10 py-4 rounded-lg font-playfair font-semibold text-xl transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
+                  >
+                    Solicitar Consulta Exclusiva
+                  </a>
+                </div>
+              </div>
+            </section>
+            <Footer />
+          </div>
+        );
+      };
+
+      // Render App
+      ReactDOM.render(<GalleryPage />, document.getElementById("root"));
+
+      // IntersectionObserver para animations
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+
+      document
+        .querySelectorAll(".fade-in, .slide-left, .slide-right, .zoom-in")
+        .forEach((el) => {
+          observer.observe(el);
+        });
+    </script>
+  </body>
+</html>
