@@ -188,42 +188,41 @@
           setIsMobileMenuOpen(false);
         };
 
-        return (
+       return (
           <header className="fixed w-full bg-white bg-opacity-90 z-50 shadow-sm fade-in">
             <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-              <h1 className="text-2xl font-playfair font-semibold text-gray-800 tracking-wider flex items-center gap-2">
+              <a href="index.html" className="flex items-center gap-2">
+                <h1 className="text-2xl font-playfair font-semibold text-gray-800 tracking-wider flex items-center gap-2">
                 <img
                   src="images/logo_pd.png"
                   alt="Paradisse Design Logo"
                   className="w-8 h-8 object-contain ml-2"
                 />
                 PARADISSE DESIGN
-              </h1>
-
+                </h1>
+              </a>
               {/* Botón de hamburguesa para móvil */}
-              <div className="md:hidden">
-                <button
-                  onClick={toggleMobileMenu}
-                  className="text-gray-700 hover:text-amber-800 focus:outline-none"
-                >
-                  <svg
-                    className="w-8 h-8"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
+                <div className="md:hidden">
+                  <button
+                    onClick={toggleMobileMenu}
+                    className="text-gray-700 hover:text-amber-800 focus:outline-none"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M4 6h16M4 12h16M4 18h16"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
-
-              {/* Menú de navegación para escritorio */}
+                    <svg
+                      className="w-8 h-8"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M4 6h16M4 12h16M4 18h16"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
               <nav className="hidden md:block">
                 <ul className="flex space-x-8">
                   <li>
@@ -251,8 +250,7 @@
                     </a>
                   </li>
                   <li>
-                    <a
-                      href="#proceso"
+                    <a href="#proceso"
                       className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
                     >
                       Proceso
@@ -268,84 +266,66 @@
                   </li>
                 </ul>
               </nav>
+              
+              {/* Menú móvil */}
+              {isMobileMenuOpen && (
+                <div className="absolute top-full left-0 w-full bg-white shadow-lg md:hidden">
+                  <nav className="px-4 py-4">
+                    <ul className="space-y-4">
+                      <li>
+                        <a
+                          href="#servicios"
+                          className="block text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          Servicios
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="galeria.html"
+                          className="block text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          Galería
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#catalogo"
+                          className="block text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          Catálogo
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#proceso"
+                          className="block text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          Proceso
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="disena.html"
+                          className="block text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          Diseña con Paradisse
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              )}
             </div>
-
-            {/* Menú de navegación para móvil (aparece desde la derecha) */}
-            <nav
-              className={`md:hidden fixed top-0 right-0 w-64 h-full bg-white shadow-lg p-6 mobile-menu ${
-                isMobileMenuOpen ? "open" : ""
-              }`}
-            >
-              <button
-                onClick={toggleMobileMenu}
-                className="absolute top-4 right-4 text-gray-700 hover:text-amber-800 focus:outline-none"
-              >
-                <svg
-                  className="w-8 h-8"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  ></path>
-                </svg>
-              </button>
-              <ul className="flex flex-col space-y-6 mt-10">
-                <li>
-                  <a
-                    href="#servicios"
-                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
-                    onClick={closeMobileMenu}
-                  >
-                    Servicios
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#galeria"
-                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
-                    onClick={closeMobileMenu}
-                  >
-                    Galería
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#catalogo"
-                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
-                    onClick={closeMobileMenu}
-                  >
-                    Catálogo
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#proceso"
-                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
-                    onClick={closeMobileMenu}
-                  >
-                    Proceso
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="disena.html"
-                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
-                    onClick={closeMobileMenu}
-                  >
-                    Diseña con Paradisse
-                  </a>
-                </li>
-              </ul>
-            </nav>
           </header>
         );
       };
+      
 
       const Hero = () => (
         <section className="hero-pattern h-screen pt-32 flex items-center fade-in">
@@ -358,7 +338,7 @@
                 Diseños premium de interior para todo tipo de espacios.
               </p>
               <a
-                href="https://wa.me/5491130890681?text=Hola!%20Me%20gustaría%20solicitar%20una%20consulta%20sobre%20muebles%20a%20medida."
+                href="https://wa.me/5491172299130?text=Hola!%20Me%20gustaría%20solicitar%20una%20consulta%20sobre%20muebles%20a%20medida."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-amber-800 hover:bg-amber-700 text-white px-6 py-3 rounded transition-colors font-montserrat fade-in"
@@ -482,7 +462,7 @@
           const message = encodeURIComponent(
             `Hola! Me gustaría recibir más información sobre el producto: "${productName}".`
           );
-          return `https://wa.me/5491130890681?text=${message}`;
+          return `https://wa.me/5491172299130?text=${message}`;
         };
 
         return (
@@ -598,15 +578,14 @@
         useEffect(() => {
           const fetchDolarBlue = async () => {
             try {
-              // Using a proxy to bypass CORS issues with DolarApi.com
               const response = await fetch(
                 "https://api.allorigins.win/raw?url=https://dolarapi.com/v1/dolares/blue"
               );
               const data = await response.json();
-              setDolarBlue(data.venta); // Get the selling price of Dolar Blue
+              setDolarBlue(data.venta); 
             } catch (error) {
               console.error("Error fetching Dolar Blue:", error);
-              setDolarBlue(null); // Handle error case
+              setDolarBlue(null); 
             }
           };
           fetchDolarBlue();
@@ -683,7 +662,7 @@
           const message = encodeURIComponent(
             `Hola! Me gustaría recibir más información sobre el producto: "${productName}".`
           );
-          return `https://wa.me/5491130890681?text=${message}`;
+          return `https://wa.me/5491172299130?text=${message}`;
         };
 
         return (
@@ -734,7 +713,7 @@
               )}
               {currency === "ARS" && !dolarBlue && (
                 <p className="text-center text-sm text-gray-600 mb-8 fade-in">
-                  Cargando cotización a Dolar...
+                  Cargando cotización ...
                 </p>
               )}
 
@@ -867,7 +846,6 @@
                   </li>
                 </ol>
 
-                {/* Botón agregado para ir a historias.html */}
                 <div className="mt-12 text-center fade-in">
                   <a
                     href="historias.html"
@@ -903,7 +881,7 @@
                 Instagram
               </a>
               <a
-                href="https://wa.me/5491130890681"
+                href="https://wa.me/5491172299130"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 rounded-full bg-[#8c6e54] text-white shadow transition bounce"
@@ -931,7 +909,6 @@
 
       ReactDOM.render(<App />, document.getElementById("root"));
 
-      // IntersectionObserver para animaciones
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {

@@ -143,7 +143,6 @@
         transform: scale(1);
       }
 
-      /* Rebote footer */
       .bounce {
         will-change: transform;
       }
@@ -159,8 +158,6 @@
           transform: translateY(-5px);
         }
       }
-
-      /* Estilos para el menú móvil */
       .mobile-menu {
         transition: transform 0.3s ease-out;
         transform: translateX(100%);
@@ -188,49 +185,47 @@
           setIsMobileMenuOpen(false);
         };
 
-        return (
+return (
           <header className="fixed w-full bg-white bg-opacity-90 z-50 shadow-sm fade-in">
             <div className="container mx-auto px-4 py-4 flex justify-between items-center">
               <a href="index.html" className="flex items-center gap-2">
                 <h1 className="text-2xl font-playfair font-semibold text-gray-800 tracking-wider flex items-center gap-2">
-                  <img
-                    src="images/logo_pd.png"
-                    alt="Paradisse Design Logo"
-                    className="w-8 h-8 object-contain ml-2"
-                  />
-                  PARADISSE DESIGN
+                <img
+                  src="images/logo_pd.png"
+                  alt="Paradisse Design Logo"
+                  className="w-8 h-8 object-contain ml-2"
+                />
+                PARADISSE DESIGN
                 </h1>
               </a>
-
+            
               {/* Botón de hamburguesa para móvil */}
-              <div className="md:hidden">
-                <button
-                  onClick={toggleMobileMenu}
-                  className="text-gray-700 hover:text-amber-800 focus:outline-none"
-                >
-                  <svg
-                    className="w-8 h-8"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
+                <div className="md:hidden">
+                  <button
+                    onClick={toggleMobileMenu}
+                    className="text-gray-700 hover:text-amber-800 focus:outline-none"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M4 6h16M4 12h16M4 18h16"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
-
-              {/* Menú de navegación para escritorio */}
+                    <svg
+                      className="w-8 h-8"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M4 6h16M4 12h16M4 18h16"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
               <nav className="hidden md:block">
                 <ul className="flex space-x-8">
                   <li>
                     <a
-                      href="servicios.html  "
+                      href="servicios.html"
                       className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
                     >
                       Servicios
@@ -253,8 +248,7 @@
                     </a>
                   </li>
                   <li>
-                    <a
-                      href="index.html#proceso"
+                    <a href="index.html#proceso"
                       className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
                     >
                       Proceso
@@ -270,81 +264,62 @@
                   </li>
                 </ul>
               </nav>
+              
+              {/* Menú móvil */}
+              {isMobileMenuOpen && (
+                <div className="absolute top-full left-0 w-full bg-white shadow-lg md:hidden">
+                  <nav className="px-4 py-4">
+                    <ul className="space-y-4">
+                      <li>
+                        <a
+                          href="servicios.html"
+                          className="block text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          Servicios
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="galeria.html"
+                          className="block text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          Galería
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="catalogo.html"
+                          className="block text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          Catálogo
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="index.html#proceso"
+                          className="block text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          Proceso
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="disena.html"
+                          className="block text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          Diseña con Paradisse
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              )}
             </div>
-
-            {/* Menú de navegación para móvil (aparece desde la derecha) */}
-            <nav
-              className={`md:hidden fixed top-0 right-0 w-64 h-full bg-white shadow-lg p-6 mobile-menu ${
-                isMobileMenuOpen ? "open" : ""
-              }`}
-            >
-              <button
-                onClick={toggleMobileMenu}
-                className="absolute top-4 right-4 text-gray-700 hover:text-amber-800 focus:outline-none"
-              >
-                <svg
-                  className="w-8 h-8"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  ></path>
-                </svg>
-              </button>
-              <ul className="flex flex-col space-y-6 mt-10">
-                <li>
-                  <a
-                    href="index.html#servicios"
-                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
-                    onClick={closeMobileMenu}
-                  >
-                    Servicios
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="index.html#galeria"
-                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
-                    onClick={closeMobileMenu}
-                  >
-                    Galería
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="catalogo.html"
-                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
-                    onClick={closeMobileMenu}
-                  >
-                    Catálogo
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="index.html#contacto"
-                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
-                    onClick={closeMobileMenu}
-                  >
-                    Contacto
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="disena.html"
-                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
-                    onClick={closeMobileMenu}
-                  >
-                    Diseña con Paradisse
-                  </a>
-                </li>
-              </ul>
-            </nav>
           </header>
         );
       };
@@ -369,10 +344,9 @@ Me gustaría conocer:
 • Materiales disponibles
 • Posibilidad de ajustar medidas`;
 
-          const whatsappMessage = encodeURIComponent(message);
-          // Reemplaza '5491130890681' con el número de WhatsApp deseado
+          const whatsappMessage = encodeURIComponent(message); 
           window.open(
-            `https://wa.me/5491130890681?text=${whatsappMessage}`,
+            `https://wa.me/5491172299130?text=${whatsappMessage}`,
             "_blank"
           );
         };
@@ -629,7 +603,6 @@ Me gustaría conocer:
 
       ReactDOM.render(<App />, document.getElementById("root"));
 
-      // IntersectionObserver para animaciones
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -642,7 +615,6 @@ Me gustaría conocer:
         { threshold: 0.15 }
       );
 
-      // Esperar a que el DOM esté listo antes de observar elementos
       setTimeout(() => {
         document
           .querySelectorAll(".fade-in, .slide-left, .slide-right, .zoom-in")

@@ -16,8 +16,6 @@
       html {
         scroll-behavior: smooth;
       }
-
-      /* Scroll up/down header styles */
       .hide-on-scroll {
         transition: transform 0.1s, opacity 0.3s;
         transform: translateY(-100%);
@@ -30,7 +28,7 @@
         opacity: 1;
         pointer-events: auto;
       }
-      /* SW7036 Accessible Beige palette */
+      /* SW7036 */
       :root {
         --sw7036: #d6cfc4;
         --sw7036-dark: #b8b1a1;
@@ -144,8 +142,6 @@
         opacity: 1;
         transform: scale(1);
       }
-
-      /* Rebote footer */
       .bounce {
         will-change: transform;
       }
@@ -190,6 +186,7 @@
                 PARADISSE DESIGN
                 </h1>
               </a>
+             
               {/* Botón de hamburguesa para móvil */}
                 <div className="md:hidden">
                   <button
@@ -381,7 +378,7 @@
                 </a>
               </div>
 
-              {/* Nuevo Proyecto 1 */}
+            
               <div className="bg-white border border-stone-200 rounded-xl shadow-lg hover:shadow-xl transition-all p-6 flex flex-col zoom-in">
                 <h3 className="text-2xl font-playfair font-bold text-amber-800 mb-4 text-center">
                   Proyecto Cuarto Agustín
@@ -409,7 +406,6 @@
                 </a>
               </div>
 
-              {/* Nuevo Proyecto 2 */}
               <div className="bg-white border border-stone-200 rounded-xl shadow-lg hover:shadow-xl transition-all p-6 flex flex-col zoom-in">
                 <h3 className="text-2xl font-playfair font-bold text-amber-800 mb-4 text-center">
                   Proyecto D
@@ -447,17 +443,26 @@
                 Cada espacio cuenta una historia única, y queremos ayudarte a contar la tuya.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="index.html#contacto"
-                  className="bg-amber-800 hover:bg-amber-700 text-white px-8 py-3 rounded-lg transition-colors font-montserrat font-medium"
-                >
-                  Contactanos
-                </a>
+                
                 <a
                   href="galeria.html"
                   className="border-2 border-amber-800 text-amber-800 hover:bg-amber-800 hover:text-white px-8 py-3 rounded-lg transition-colors font-montserrat font-medium"
                 >
                   Ver Más Proyectos
+                </a>
+                <a
+                  href="https://wa.me/5491172299130"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-amber-800 hover:bg-amber-700 text-white px-8 py-3 rounded-lg transition-colors font-montserrat font-medium"
+                >
+                  Contactanos
+                </a>
+                <a
+                  href="catalogo.html"
+                  className="border-2 border-amber-800 text-amber-800 hover:bg-amber-800 hover:text-white px-8 py-3 rounded-lg transition-colors font-montserrat font-medium"
+                >
+                  Ver Catálogo
                 </a>
               </div>
             </div>
@@ -505,7 +510,8 @@
           </div>
         </section>
       );
-     const Footer = () => (
+     
+      const Footer = () => (
         <footer className="bg-gradient-to-b from-stone-100 to-stone-200 border-t border-black/10 fade-in">
           <div className="max-w-5xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3 font-semibold text-stone-700">
@@ -526,7 +532,7 @@
                 Instagram
               </a>
               <a
-                href="https://wa.me/5491130890681"
+                href="https://wa.me/5491172299130"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 rounded-full bg-amber-700 text-white shadow transition bounce hover:bg-amber-800"

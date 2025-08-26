@@ -160,7 +160,6 @@
         transform: scale(1);
       }
 
-      /* Rebote footer */
       .bounce:hover {
         animation: bounce 0.6s;
       }
@@ -254,7 +253,7 @@
                   </li>
                   <li>
                     <a
-                      href="proceso.html"
+                      href="index.html#proceso"
                       className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
                     >
                       Proceso
@@ -302,7 +301,7 @@
                       </li>
                       <li>
                         <a
-                          href="proceso.html"
+                          href="index.html#proceso"
                           className="block text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
                         >
                           Proceso
@@ -485,7 +484,7 @@
                 descubre cómo podemos hacer realidad tus ideas.
               </p>
               <a
-                href="index.html#contacto"
+                href="https://wa.me/5491172299130?text=Hola!%20Me%20gustaría%20solicitar%20una%20consulta%20para%20un%20proyecto%20de%20muebles%20para%20mi%20hogar."
                 className="inline-block bg-amber-800 hover:bg-amber-700 text-white px-8 py-4 rounded-lg transition-colors font-montserrat text-xl shadow-lg"
               >
                 Solicitar Consulta
@@ -516,7 +515,7 @@
                 Instagram
               </a>
               <a
-                href="https://wa.me/5491130890681"
+                href="https://wa.me/5491172299130"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 rounded-full bg-amber-700 text-white shadow transition bounce hover:bg-amber-800"
@@ -538,9 +537,7 @@
 
       ReactDOM.render(<App />, document.getElementById("root"));
 
-      // Esperar a que el DOM esté completamente cargado
       setTimeout(() => {
-        // IntersectionObserver para animaciones
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
@@ -553,7 +550,6 @@
           { threshold: 0.15 }
         );
 
-        // Observar elementos con clases de animación
         const elementsToAnimate = document.querySelectorAll(".fade-in, .slide-left, .slide-right, .zoom-in");
         elementsToAnimate.forEach((el) => {
           observer.observe(el);
