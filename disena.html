@@ -240,14 +240,6 @@
                   </li>
                   <li>
                     <a
-                      href="proceso.html"
-                      className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
-                    >
-                      Proceso
-                    </a>
-                  </li>
-                  <li>
-                    <a
                       href="index.html#contacto"
                       className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
                     >
@@ -398,6 +390,62 @@
                   Ver Proyecto Completo
                 </a>
               </div>
+
+              {/* Nuevo Proyecto 1 */}
+              <div className="bg-white border border-stone-200 rounded-xl shadow-lg hover:shadow-xl transition-all p-6 flex flex-col zoom-in">
+                <h3 className="text-2xl font-playfair font-bold text-amber-800 mb-4 text-center">
+                  Proyecto Cuarto Agustín
+                </h3>
+                <div className="relative w-full h-96 mb-4 rounded-lg overflow-hidden">
+                  <iframe
+                    src="https://app.lapentor.com/sphere/cuarto-agustin?scene=66497ca1531a3afa6c035e13"
+                    frameBorder="0"
+                    width="100%"
+                    height="100%"
+                    allowFullScreen={true}
+                    className="absolute inset-0"
+                  ></iframe>
+                </div>
+                <p className="text-stone-700 font-montserrat text-sm mb-4">
+                  Un recorrido virtual por un espacio diseñado para Agustín, mostrando funcionalidad y estilo.
+                </p>
+                <a
+                  href="https://app.lapentor.com/sphere/cuarto-agustin?scene=66497ca1531a3afa6c035e13"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-amber-800 hover:bg-amber-700 text-white px-4 py-2 rounded transition-colors font-montserrat text-sm text-center"
+                >
+                  Ver Proyecto Completo
+                </a>
+              </div>
+
+              {/* Nuevo Proyecto 2 */}
+              <div className="bg-white border border-stone-200 rounded-xl shadow-lg hover:shadow-xl transition-all p-6 flex flex-col zoom-in">
+                <h3 className="text-2xl font-playfair font-bold text-amber-800 mb-4 text-center">
+                  Proyecto D
+                </h3>
+                <div className="relative w-full h-96 mb-4 rounded-lg overflow-hidden">
+                  <iframe
+                    src="https://app.lapentor.com/sphere/d-1710125995?scene=65ee74317d27922d990961f7"
+                    frameBorder="0"
+                    width="100%"
+                    height="100%"
+                    allowFullScreen={true}
+                    className="absolute inset-0"
+                  ></iframe>
+                </div>
+                <p className="text-stone-700 font-montserrat text-sm mb-4">
+                  Explora el diseño innovador del Proyecto D, un espacio moderno y adaptable.
+                </p>
+                <a
+                  href="https://app.lapentor.com/sphere/d-1710125995?scene=65ee74317d27922d990961f7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-amber-800 hover:bg-amber-700 text-white px-4 py-2 rounded transition-colors font-montserrat text-sm text-center"
+                >
+                  Ver Proyecto Completo
+                </a>
+              </div>
             </div>
 
             <div className="mt-16 text-center fade-in">
@@ -467,84 +515,45 @@
           </div>
         </section>
       );
-
-      const Footer = () => (
-        <footer className="bg-stone-900 text-white py-12 fade-in">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div className="bounce">
-                <h3 className="text-xl font-playfair font-bold mb-4">
-                  Paradisse Design
-                </h3>
-                <p className="text-stone-300 font-montserrat text-sm">
-                  Transformamos espacios en experiencias únicas que reflejan tu
-                  personalidad y estilo de vida.
-                </p>
-              </div>
-              <div className="bounce">
-                <h4 className="text-lg font-playfair font-semibold mb-4">
-                  Servicios
-                </h4>
-                <ul className="space-y-2 text-stone-300 font-montserrat text-sm">
-                  <li>
-                    <a href="servicios.html" className="hover:text-amber-400">
-                      Diseño de Interiores
-                    </a>
-                  </li>
-                  <li>
-                    <a href="servicios.html" className="hover:text-amber-400">
-                      Consultoría
-                    </a>
-                  </li>
-                  <li>
-                    <a href="servicios.html" className="hover:text-amber-400">
-                      Renders 3D
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div className="bounce">
-                <h4 className="text-lg font-playfair font-semibold mb-4">
-                  Enlaces
-                </h4>
-                <ul className="space-y-2 text-stone-300 font-montserrat text-sm">
-                  <li>
-                    <a href="galeria.html" className="hover:text-amber-400">
-                      Galería
-                    </a>
-                  </li>
-                  <li>
-                    <a href="proceso.html" className="hover:text-amber-400">
-                      Proceso
-                    </a>
-                  </li>
-                  <li>
-                    <a href="catalogo.html" className="hover:text-amber-400">
-                      Catálogo
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div className="bounce">
-                <h4 className="text-lg font-playfair font-semibold mb-4">
-                  Contacto
-                </h4>
-                <div className="space-y-2 text-stone-300 font-montserrat text-sm">
-                  <p>📧 info@paradissedesign.com</p>
-                  <p>📱 +54 9 11 1234-5678</p>
-                  <p>📍 Buenos Aires, Argentina</p>
-                </div>
-              </div>
+     const Footer = () => (
+        <footer className="bg-gradient-to-b from-[#e7ddcf] to-[#f3ece2] border-t border-black/10 fade-in">
+          <div className="max-w-5xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3 font-semibold text-[#4e3a2e]">
+              <img
+                src="images/logo_pd.png"
+                alt="Paradisse Design Logo"
+                className="w-6 h-6 object-contain mr-2"
+              />
+              <span>Paradisse Design</span>
+            </div> 
+            <div className="mt-2 pt-2 text-center">
+            <p className="text-stone-400 font-montserrat text-sm">
+              © 2025 Paradisse Design. Todos los derechos reservados.
+            </p>
             </div>
-            <div className="border-t border-stone-700 mt-8 pt-8 text-center">
-              <p className="text-stone-400 font-montserrat text-sm">
-                © 2024 Paradisse Design. Todos los derechos reservados.
-              </p>
-            </div>
+            <nav className="flex gap-4">
+              <a
+                href="https://www.instagram.com/paradisse.design"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded-full bg-[#6b4f3b] text-white shadow transition bounce"
+              >
+                Instagram
+              </a>
+              <a
+                href="https://wa.me/5491130890681"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded-full bg-[#8c6e54] text-white shadow transition bounce"
+              >
+                WhatsApp
+              </a>
+             
+            </nav>
           </div>
+            
         </footer>
       );
-
       const App = () => {
         useEffect(() => {
           // Configurar Tailwind

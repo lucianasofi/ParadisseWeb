@@ -254,14 +254,6 @@
                   </li>
                   <li>
                     <a
-                      href="proceso.html"
-                      className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
-                    >
-                      Proceso
-                    </a>
-                  </li>
-                  <li>
-                    <a
                       href="index.html#contacto"
                       className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
                     >
@@ -509,24 +501,28 @@
           </div>
         </section>
       );
-
-      const Footer = () => (
-        <footer className="bg-gradient-to-b from-stone-100 to-stone-200 border-t border-black/10 fade-in">
+ const Footer = () => (
+        <footer className="bg-gradient-to-b from-[#e7ddcf] to-[#f3ece2] border-t border-black/10 fade-in">
           <div className="max-w-5xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-3 font-semibold text-stone-700">
+            <div className="flex items-center gap-3 font-semibold text-[#4e3a2e]">
               <img
                 src="images/logo_pd.png"
                 alt="Paradisse Design Logo"
                 className="w-6 h-6 object-contain mr-2"
               />
               <span>Paradisse Design</span>
+            </div> 
+            <div className="mt-2 pt-2 text-center">
+            <p className="text-stone-400 font-montserrat text-sm">
+              © 2025 Paradisse Design. Todos los derechos reservados.
+            </p>
             </div>
-            <nav className="flex gap-3">
+            <nav className="flex gap-4">
               <a
                 href="https://www.instagram.com/paradisse.design"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 rounded-full bg-amber-800 text-white shadow transition bounce hover:bg-amber-700"
+                className="px-4 py-2 rounded-full bg-[#6b4f3b] text-white shadow transition bounce"
               >
                 Instagram
               </a>
@@ -534,10 +530,11 @@
                 href="https://wa.me/5491130890681"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 rounded-full bg-amber-700 text-white shadow transition bounce hover:bg-amber-800"
+                className="px-4 py-2 rounded-full bg-[#8c6e54] text-white shadow transition bounce"
               >
                 WhatsApp
               </a>
+             
             </nav>
           </div>
         </footer>
