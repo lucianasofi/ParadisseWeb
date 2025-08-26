@@ -159,6 +159,15 @@
           transform: translateY(-5px);
         }
       }
+
+      /* Estilos para el menú móvil */
+      .mobile-menu {
+        transition: transform 0.3s ease-out;
+        transform: translateX(100%);
+      }
+      .mobile-menu.open {
+        transform: translateX(0);
+      }
     </style>
   </head>
 
@@ -168,31 +177,149 @@
     <script type="text/babel">
       const { useState, useEffect } = React;
 
-      const Header = () => (
-        <header className="fixed w-full bg-white bg-opacity-90 z-50 shadow-sm fade-in">
-          <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 className="text-2xl font-playfair font-semibold text-gray-800 tracking-wider flex items-center gap-2">
-              <img
-                src="images/logo_pd.png"
-                alt="Paradisse Design Logo"
-                className="w-8 h-8 object-contain ml-2"
-              />
-              PARADISSE DESIGN
-            </h1>
-            <nav className="hidden md:block">
-              <ul className="flex space-x-8">
+      const Header = () => {
+        const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+        const toggleMobileMenu = () => {
+          setIsMobileMenuOpen(!isMobileMenuOpen);
+        };
+
+        const closeMobileMenu = () => {
+          setIsMobileMenuOpen(false);
+        };
+
+        return (
+          <header className="fixed w-full bg-white bg-opacity-90 z-50 shadow-sm fade-in">
+            <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+              <a href="index.html" className="flex items-center gap-2">
+                <h1 className="text-2xl font-playfair font-semibold text-gray-800 tracking-wider flex items-center gap-2">
+                  <img
+                    src="images/logo_pd.png"
+                    alt="Paradisse Design Logo"
+                    className="w-8 h-8 object-contain ml-2"
+                  />
+                  PARADISSE DESIGN
+                </h1>
+              </a>
+
+              {/* Botón de hamburguesa para móvil */}
+              <div className="md:hidden">
+                <button
+                  onClick={toggleMobileMenu}
+                  className="text-gray-700 hover:text-amber-800 focus:outline-none"
+                >
+                  <svg
+                    className="w-8 h-8"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M4 6h16M4 12h16M4 18h16"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+
+              {/* Menú de navegación para escritorio */}
+              <nav className="hidden md:block">
+                <ul className="flex space-x-8">
+                  <li>
+                    <a
+                      href="#servicios"
+                      className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                    >
+                      Servicios
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#galeria"
+                      className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                    >
+                      Galería
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#catalogo"
+                      className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                    >
+                      Catálogo
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#proceso"
+                      className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                    >
+                      Proceso
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#contacto"
+                      className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                    >
+                      Contacto
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="disena.html"
+                      className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                    >
+                      Diseña con Paradisse
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+
+            {/* Menú de navegación para móvil (aparece desde la derecha) */}
+            <nav
+              className={`md:hidden fixed top-0 right-0 w-64 h-full bg-white shadow-lg p-6 mobile-menu ${
+                isMobileMenuOpen ? "open" : ""
+              }`}
+            >
+              <button
+                onClick={toggleMobileMenu}
+                className="absolute top-4 right-4 text-gray-700 hover:text-amber-800 focus:outline-none"
+              >
+                <svg
+                  className="w-8 h-8"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  ></path>
+                </svg>
+              </button>
+              <ul className="flex flex-col space-y-6 mt-10">
                 <li>
                   <a
                     href="#servicios"
-                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
+                    onClick={closeMobileMenu}
                   >
                     Servicios
                   </a>
                 </li>
                 <li>
                   <a
-                    href="#galeria"
-                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                    href="galeria.html"
+                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
+                    onClick={closeMobileMenu}
                   >
                     Galería
                   </a>
@@ -200,7 +327,8 @@
                 <li>
                   <a
                     href="#catalogo"
-                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
+                    onClick={closeMobileMenu}
                   >
                     Catálogo
                   </a>
@@ -208,7 +336,8 @@
                 <li>
                   <a
                     href="#proceso"
-                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
+                    onClick={closeMobileMenu}
                   >
                     Proceso
                   </a>
@@ -216,24 +345,26 @@
                 <li>
                   <a
                     href="#contacto"
-                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
+                    onClick={closeMobileMenu}
                   >
                     Contacto
                   </a>
                 </li>
                 <li>
                   <a
-                    href="#disena"
-                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                    href="disena.html"
+                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
+                    onClick={closeMobileMenu}
                   >
                     Diseña con Paradisse
                   </a>
                 </li>
               </ul>
             </nav>
-          </div>
-        </header>
-      );
+          </header>
+        );
+      };
 
       const Hero = () => (
         <section className="hero-pattern h-screen pt-32 flex items-center fade-in">
@@ -378,7 +509,12 @@
               {/* Productos Destacados */}
               <div className="flex flex-col items-center slide-left">
                 <h2 className="text-4xl font-playfair font-bold text-center mb-10 text-[#4e3a2e]">
-                  Productos Destacados
+                  <a
+                    href="galeria.html"
+                    className="cursor-pointer hover:underline"
+                  >
+                    Productos Destacados
+                  </a>
                 </h2>
                 <div className="relative w-full max-w-md h-96 overflow-hidden rounded-lg shadow-lg border border-[#a38f62]">
                   <img
@@ -423,7 +559,12 @@
               {/* Novedades */}
               <div className="flex flex-col items-center slide-right">
                 <h2 className="text-4xl font-playfair font-bold text-center mb-10 text-[#4e3a2e]">
-                  Novedades
+                  <a
+                    href="galeria.html"
+                    className="cursor-pointer hover:underline"
+                  >
+                    Novedades
+                  </a>
                 </h2>
                 <div className="relative w-full max-w-md h-96 overflow-hidden rounded-lg shadow-lg border border-[#a38f62]">
                   <img
@@ -566,7 +707,12 @@
           <section id="catalogo" className="py-20 bg-white fade-in">
             <div className="container mx-auto px-4 max-w-6xl">
               <h2 className="text-4xl font-playfair font-bold text-center mb-10 text-stone-900 slide-left">
-                Catálogo de Productos
+                <a
+                  href="catalogo.html"
+                  className="cursor-pointer hover:underline"
+                >
+                  Catálogo de Productos
+                </a>
               </h2>
               <div className="flex justify-center mb-8">
                 <button
@@ -666,7 +812,12 @@
             <div className="container mx-auto px-4 max-w-6xl flex flex-col md:flex-row gap-12 items-start">
               <div className="w-full md:w-1/2 slide-left">
                 <h2 className="text-4xl font-playfair font-bold mb-10">
-                  Nuestro Proceso
+                  <a
+                    href="proceso.html"
+                    className="cursor-pointer hover:underline"
+                  >
+                    Nuestro Proceso
+                  </a>
                 </h2>
                 <p className="font-montserrat leading-relaxed mb-6">
                   Te acompañamos desde la inspiración inicial hasta la
@@ -912,3 +1063,4 @@
     </script>
   </body>
 </html>
++
