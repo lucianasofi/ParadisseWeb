@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Paradisse Design | Galería de Proyectos</title>
+    <title>Historias de Éxito | Paradisse Design</title>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -125,7 +125,6 @@
         transform: scale(1);
       }
 
-      /* Rebote footer */
       .bounce {
         will-change: transform;
       }
@@ -142,59 +141,12 @@
         }
       }
 
-      /* Estilos para el menú móvil */
       .mobile-menu {
         transition: transform 0.3s ease-out;
         transform: translateX(100%);
       }
       .mobile-menu.open {
         transform: translateX(0);
-      }
-
-      /* Estilos específicos de la galería */
-      .gallery-item {
-        position: relative;
-        overflow: hidden;
-        border-radius: 0.75rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-      .gallery-item img {
-        width: 100%;
-        height: 250px; /* Altura fija para las imágenes */
-        object-fit: cover;
-        transition: transform 0.3s ease-in-out;
-      }
-      .gallery-item:hover img {
-        transform: scale(1.05);
-      }
-      .gallery-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.6);
-        color: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out;
-        padding: 1rem;
-        text-align: center;
-      }
-      .gallery-item:hover .gallery-overlay {
-        opacity: 1;
-      }
-      .gallery-overlay h3 {
-        font-family: "Playfair Display", serif;
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-      }
-      .gallery-overlay p {
-        font-family: "Montserrat", sans-serif;
-        font-size: 0.9rem;
       }
     </style>
   </head>
@@ -216,41 +168,41 @@
           setIsMobileMenuOpen(false);
         };
 
-       return (
+        return (
           <header className="fixed w-full bg-white bg-opacity-90 z-50 shadow-sm fade-in">
             <div className="container mx-auto px-4 py-4 flex justify-between items-center">
               <a href="index.html" className="flex items-center gap-2">
                 <h1 className="text-2xl font-playfair font-semibold text-gray-800 tracking-wider flex items-center gap-2">
-                <img
-                  src="images/logo_pd.png"
-                  alt="Paradisse Design Logo"
-                  className="w-8 h-8 object-contain ml-2"
-                />
-                PARADISSE DESIGN
+                  <img
+                    src="images/logo_pd.png"
+                    alt="Paradisse Design Logo"
+                    className="w-8 h-8 object-contain ml-2"
+                  />
+                  PARADISSE DESIGN
                 </h1>
               </a>
               {/* Botón de hamburguesa para móvil */}
-                <div className="md:hidden">
-                  <button
-                    onClick={toggleMobileMenu}
-                    className="text-gray-700 hover:text-amber-800 focus:outline-none"
+              <div className="md:hidden">
+                <button
+                  onClick={toggleMobileMenu}
+                  className="text-gray-700 hover:text-amber-800 focus:outline-none"
+                >
+                  <svg
+                    className="w-8 h-8"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    <svg
-                      className="w-8 h-8"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M4 6h16M4 12h16M4 18h16"
-                      ></path>
-                    </svg>
-                  </button>
-                </div>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M4 6h16M4 12h16M4 18h16"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
               <nav className="hidden md:block">
                 <ul className="flex space-x-8">
                   <li>
@@ -278,7 +230,8 @@
                     </a>
                   </li>
                   <li>
-                    <a href="index.html#proceso"
+                    <a
+                      href="index.html#proceso"
                       className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
                     >
                       Proceso
@@ -294,7 +247,7 @@
                   </li>
                 </ul>
               </nav>
-              
+
               {/* Menú móvil */}
               {isMobileMenuOpen && (
                 <div className="absolute top-full left-0 w-full bg-white shadow-lg md:hidden">
@@ -329,7 +282,7 @@
                       </li>
                       <li>
                         <a
-                          href="proceso.html"
+                          href="index.html#proceso"
                           className="block text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
@@ -353,5 +306,314 @@
           </header>
         );
       };
-      
-      
+
+      const ProcessCarousel = ({ images }) => {
+        const [currentIndex, setCurrentIndex] = useState(0);
+
+        const nextImage = () => {
+          setCurrentIndex((prevIndex) =>
+            prevIndex === images.length - 1 ? 0 : prevIndex + 1
+          );
+        };
+
+        const prevImage = () => {
+          setCurrentIndex((prevIndex) =>
+            prevIndex === 0 ? images.length - 1 : prevIndex - 1
+          );
+        };
+
+        return (
+          <div className="relative w-full h-64 md:h-80 overflow-hidden rounded-lg shadow-md border border-stone-200">
+            <img
+              src={images[currentIndex]}
+              alt="Proceso del mueble"
+              className="w-full h-full object-cover transition-opacity duration-500 ease-in-out"
+            />
+            <button
+              onClick={prevImage}
+              className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-amber-800 bg-opacity-70 text-white p-2 rounded-full shadow-md hover:bg-opacity-100 transition"
+            >
+              &lt;
+            </button>
+            <button
+              onClick={nextImage}
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-amber-800 bg-opacity-70 text-white p-2 rounded-full shadow-md hover:bg-opacity-100 transition"
+            >
+              &gt;
+            </button>
+            <div className="absolute bottom-2 left-0 right-0 flex justify-center space-x-1">
+              {images.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`w-2 h-2 rounded-full ${
+                    index === currentIndex ? "bg-amber-800" : "bg-gray-300"
+                  }`}
+                ></button>
+              ))}
+            </div>
+          </div>
+        );
+      };
+
+      const CustomerStories = () => {
+        const stories = [
+          {
+            id: 1,
+            name: "Familia García",
+            images: [
+              "images/garcia_diseno.jpg",
+              "images/garcia_armado.jpg",
+              "images/garcia_final.jpg",
+            ],
+            story: {
+              summary:
+                "La Familia García buscaba un mueble de TV flotante a medida para su sala. Necesitaban una solución que organizara su entretenimiento y fuera estéticamente central. Rediseñamos su sala, logrando un ambiente moderno y funcional que superó sus expectativas.",
+              furnitureDetails:
+                "Mueble de TV flotante con estantes integrados y panel iluminado, en nogal y laca blanca mate. Incluye compartimentos ocultos para cables.",
+            },
+          },
+          {
+            id: 2,
+            name: "Martín y Sofía",
+            images: [
+              "images/martin_sofia_diseno.jpg",
+              "images/martin_sofia_armado.jpg",
+              "images/martin_sofia_final.jpg",
+            ],
+            story: {
+              summary:
+                "Martín y Sofía necesitaban un escritorio a medida para su nuevo estudio en casa. Querían un espacio ergonómico y estético con buen almacenamiento. Transformamos su cuarto de invitados en un estudio multifuncional, optimizando cada rincón.",
+              furnitureDetails:
+                "Escritorio en L con superficie amplia, cajones con cierre suave y módulo de almacenamiento vertical. Melamina texturizada color cemento y patas metálicas negras.",
+            },
+          },
+          {
+            id: 3,
+            name: "Sra. Elena Rodríguez",
+            images: [
+              "images/elena_diseno.jpg",
+              "images/elena_armado.jpg",
+              "images/elena_final.jpg",
+            ],
+            story: {
+              summary:
+                "La Sra. Elena buscaba renovar su comedor con una mesa versátil para el día a día y eventos. Diseñamos una mesa extensible que transformó su comedor en un espacio moderno y acogedor, perfecto para compartir.",
+              furnitureDetails:
+                "Mesa de comedor extensible de madera maciza de paraíso (1.60m a 2.40m) con acabado natural, y seis sillas tapizadas en lino gris claro.",
+            },
+          },
+          {
+            id: 4,
+            name: "Los Pérez",
+            images: [
+              "images/perez_diseno.jpg",
+              "images/perez_armado.jpg",
+              "images/perez_final.jpg",
+            ],
+            story: {
+              summary:
+                "Los Pérez necesitaban soluciones de almacenamiento para su dormitorio principal. Creamos un armario empotrado a medida que maximizó el espacio y eliminó el desorden, logrando un ambiente más organizado y sereno.",
+              furnitureDetails:
+                "Armario empotrado con puertas corredizas de espejo e interior personalizado con cajones, estantes y barras para colgar.",
+            },
+          },
+          {
+            id: 5,
+            name: "Familia Fernández",
+            images: [
+              "images/fernandez_diseno.jpg",
+              "images/fernandez_armado.jpg",
+              "images/fernandez_final.jpg",
+            ],
+            story: {
+              summary:
+                "La Familia Fernández buscaba una biblioteca modular para su sala de estudio. Diseñamos un espacio funcional y estético que alberga su colección de libros y objetos, creando un ambiente intelectual y acogedor.",
+              furnitureDetails:
+                "Biblioteca modular en roble claro con detalles en metal negro y escritorio integrado.",
+            },
+          },
+          {
+            id: 6,
+            name: "Sr. y Sra. López",
+            images: [
+              "images/lopez_diseno.jpg",
+              "images/lopez_armado.jpg",
+              "images/lopez_final.jpg",
+            ],
+            story: {
+              summary:
+                "El Sr. y la Sra. López necesitaban un mueble de baño a medida para su reciente remodelación. Creamos un vanitory flotante que optimizó el espacio y complementó el diseño moderno de su nuevo baño, con una funcionalidad excepcional.",
+              furnitureDetails:
+                "Vanitory flotante de doble bacha con cajones de gran capacidad y acabado hidrolaqueado gris antracita. Incluye espejo con iluminación LED y nicho lateral.",
+            },
+          },
+          {
+            id: 7,
+            name: "Familia Romero",
+            images: [
+              "images/romero_diseno.jpg",
+              "images/romero_armado.jpg",
+              "images/romero_final.jpg",
+            ],
+            story: {
+              summary:
+                "La Familia Romero quería transformar su living en un espacio más funcional y acogedor para reuniones familiares. Diseñamos un modular a medida que integra la TV, almacenamiento y una barra de bar, creando un ambiente sofisticado y práctico.",
+              furnitureDetails:
+                "Modular de living en melamina texturizada color wengue con detalles en blanco brillante, estantes flotantes, espacio para TV de 65 pulgadas y barra de bar retráctil.",
+            },
+          },
+          {
+            id: 8,
+            name: "Javier y Carolina",
+            images: [
+              "images/javier_carolina_diseno.jpg",
+              "images/javier_carolina_armado.jpg",
+              "images/javier_carolina_final.jpg",
+            ],
+            story: {
+              summary:
+                "Javier y Carolina, amantes de la lectura, buscaban una solución para organizar su vasta colección de libros en un espacio reducido. Creamos una estantería de pared a pared y de piso a techo, maximizando el almacenamiento sin sacrificar el estilo.",
+              furnitureDetails:
+                "Estantería modular de piso a techo en madera de fresno con divisiones asimétricas y escalera deslizante integrada, optimizada para libros y objetos decorativos.",
+            },
+          },
+          {
+            id: 9,
+            name: "Sra. Beatriz Giménez",
+            images: [
+              "images/beatriz_diseno.jpg",
+              "images/beatriz_armado.jpg",
+              "images/beatriz_final.jpg",
+            ],
+            story: {
+              summary:
+                "La Sra. Beatriz necesitaba un mueble para su recibidor que fuera práctico y estético. Diseñamos un mueble multifuncional que incluye un banco para sentarse, almacenamiento para zapatos y un perchero oculto, transformando la entrada de su hogar.",
+              furnitureDetails:
+                "Mueble de recibidor compacto en MDF laqueado blanco con asiento tapizado en tela antimanchas, dos cajones extraíbles para zapatos y un panel con ganchos ocultos.",
+            },
+          },
+        ];
+
+        return (
+          <section className="py-20 pt-32 bg-white">
+            {" "}
+            <div className="container mx-auto px-4 max-w-6xl">
+              <h2 className="text-4xl font-playfair font-bold text-center mb-16 text-stone-900 slide-left">
+                Historias de Éxito de Nuestros Clientes
+              </h2>
+
+              <div className="space-y-20">
+                {stories.map((story, index) => (
+                  <div
+                    key={story.id}
+                    // Aplicamos las clases de animación directamente aquí
+                    className={`bg-amber-50/50 border border-stone-200 rounded-xl shadow-lg p-8 flex flex-col md:flex-row gap-8 items-center ${
+                      index % 2 === 0 ? "slide-left" : "slide-right"
+                    }`}
+                  >
+                    {/* Carrusel de Imágenes del Proceso */}
+                    <div
+                      className={`w-full md:w-1/2 ${
+                        index % 2 === 0 ? "order-1" : "order-2"
+                      }`}
+                    >
+                      <ProcessCarousel images={story.images} />
+                    </div>
+
+                    {/* Historia del Cliente */}
+                    <div
+                      className={`w-full md:w-1/2 ${
+                        index % 2 === 0 ? "order-2" : "order-1"
+                      }`}
+                    >
+                      <h3 className="text-3xl font-playfair font-bold text-amber-800 mb-4">
+                        {story.name}
+                      </h3>
+                      <div className="space-y-4 text-stone-700 font-montserrat leading-relaxed">
+                        <p>
+                          <strong>Resumen:</strong> {story.story.summary}
+                        </p>
+                        <p>
+                          <strong>Detalles del mueble:</strong>{" "}
+                          {story.story.furnitureDetails}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      };
+
+      const Footer = () => (
+        <footer className="bg-gradient-to-b from-[#e7ddcf] to-[#f3ece2] border-t border-black/10 fade-in">
+          <div className="max-w-5xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3 font-semibold text-[#4e3a2e]">
+              <img
+                src="images/logo_pd.png"
+                alt="Paradisse Design Logo"
+                className="w-6 h-6 object-contain mr-2"
+              />
+              <span>Paradisse Design</span>
+            </div>
+            <nav className="flex gap-4">
+              <a
+                href="https://www.instagram.com/paradisse.design"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded-full bg-[#6b4f3b] text-white shadow transition bounce"
+              >
+                Instagram
+              </a>
+              <a
+                href="https://wa.me/5491172299130"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded-full bg-[#8c6e54] text-white shadow transition bounce"
+              >
+                WhatsApp
+              </a>
+            </nav>
+          </div>
+        </footer>
+      );
+
+      const App = () => {
+        useEffect(() => {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("visible");
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.15 }
+          );
+
+          document
+            .querySelectorAll(".fade-in, .slide-left, .slide-right, .zoom-in")
+            .forEach((el) => {
+              observer.observe(el);
+            });
+
+          return () => observer.disconnect();
+        }, []);
+
+        return (
+          <div className="font-montserrat">
+            <Header />
+            <CustomerStories />
+            <Footer />
+          </div>
+        );
+      };
+
+      ReactDOM.render(<App />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
