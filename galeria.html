@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Paradisse Design | Galería de Proyectos Exclusivos</title>
+    <title>Paradisse Design | Galería de Proyectos</title>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -16,18 +16,7 @@
       html {
         scroll-behavior: smooth;
       }
-      .hide-on-scroll {
-        transition: transform 0.1s, opacity 0.3s;
-        transform: translateY(-100%);
-        opacity: 0;
-        pointer-events: none;
-      }
-      .show-on-scroll {
-        transition: transform 0.1s, opacity 0.3s;
-        transform: translateY(0);
-        opacity: 1;
-        pointer-events: auto;
-      }
+      /* SW7036 */
       :root {
         --sw7036: #d6cfc4;
         --sw7036-dark: #b8b1a1;
@@ -38,12 +27,6 @@
       body {
         background-color: var(--sw7036-light);
         color: var(--sw7036-contrast);
-      }
-      .hero-pattern {
-        background-image: url("images/fonini.jpg");
-        background-size: cover;
-        background-position: center;
-        background-color: var(--sw7036);
       }
       header,
       .bg-white,
@@ -94,11 +77,6 @@
       .gallery-item:hover .gallery-overlay {
         opacity: 1;
       }
-      .gallery-overlay {
-        opacity: 0;
-        transition: opacity 0.3s;
-        background-color: rgba(0, 0, 0, 0.6);
-      }
       input:focus,
       textarea:focus {
         outline: none;
@@ -108,6 +86,8 @@
       .rounded-lg {
         border-radius: 0.75rem;
       }
+
+      /* Animaciones */
       .fade-in {
         opacity: 0;
         transform: translateY(20px);
@@ -145,6 +125,10 @@
         transform: scale(1);
       }
 
+      /* Rebote footer */
+      .bounce {
+        will-change: transform;
+      }
       .bounce:hover {
         animation: bounce 0.6s;
       }
@@ -158,93 +142,59 @@
         }
       }
 
-      .carousel-container {
-        position: relative;
-        overflow: hidden;
-        border-radius: 0.75rem;
-        border: 1px solid var(--sw7036-accent);
+      /* Estilos para el menú móvil */
+      .mobile-menu {
+        transition: transform 0.3s ease-out;
+        transform: translateX(100%);
       }
-      .carousel-inner {
-        display: flex;
-        transition: transform 0.5s ease-in-out;
-      }
-      .carousel-item {
-        min-width: 100%;
-        box-sizing: border-box;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .carousel-item img,
-      .carousel-item video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      .carousel-button {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: rgba(107, 79, 59, 0.85);
-        color: white;
-        padding: 0.75rem 1rem;
-        border-radius: 9999px;
-        cursor: pointer;
-        z-index: 10;
-        transition: background-color 0.3s, transform 0.2s;
-      }
-      .carousel-button:hover {
-        background-color: var(--sw7036-contrast);
-        transform: translateY(-50%) scale(1.05);
-      }
-      .carousel-button.left {
-        left: 1rem;
-      }
-      .carousel-button.right {
-        right: 1rem;
-      }
-      .carousel-dots {
-        position: absolute;
-        bottom: 1rem;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 0.5rem;
-        z-index: 10;
-      }
-      .carousel-dot {
-        width: 0.75rem;
-        height: 0.75rem;
-        background-color: rgba(255, 255, 255, 0.6);
-        border-radius: 9999px;
-        cursor: pointer;
-        transition: background-color 0.3s, transform 0.3s;
-      }
-      .carousel-dot.active {
-        background-color: var(--sw7036-accent);
-        transform: scale(1.2);
+      .mobile-menu.open {
+        transform: translateX(0);
       }
 
-      .video-grid-item {
+      /* Estilos específicos de la galería */
+      .gallery-item {
         position: relative;
-        padding-bottom: 56.25%;
-        height: 0;
         overflow: hidden;
         border-radius: 0.75rem;
-        box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.15),
-          0 4px 10px -2px rgba(0, 0, 0, 0.08);
-        border: 1px solid var(--sw7036-accent);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .gallery-item img {
+        width: 100%;
+        height: 250px; /* Altura fija para las imágenes */
+        object-fit: cover;
         transition: transform 0.3s ease-in-out;
       }
-      .video-grid-item:hover {
-        transform: translateY(-5px);
+      .gallery-item:hover img {
+        transform: scale(1.05);
       }
-      .video-grid-item video {
+      .gallery-overlay {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        padding: 1rem;
+        text-align: center;
+      }
+      .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+      }
+      .gallery-overlay h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .gallery-overlay p {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.9rem;
       }
     </style>
   </head>
@@ -253,29 +203,30 @@
     <div id="root"></div>
 
     <script type="text/babel">
-      const { useState, useEffect, useRef } = React;
+      const { useState, useEffect } = React;
 
-      // Header
       const Header = () => {
-        const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Estado para controlar la visibilidad del menú móvil
+        const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
         const toggleMobileMenu = () => {
-          setIsMobileMenuOpen(!isMobileMenuOpen); // Cambia el estado de visibilidad
+          setIsMobileMenuOpen(!isMobileMenuOpen);
+        };
+
+        const closeMobileMenu = () => {
+          setIsMobileMenuOpen(false);
         };
 
         return (
           <header className="fixed w-full bg-white bg-opacity-90 z-50 shadow-sm fade-in">
             <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-              <a href="index.html" className="flex items-center gap-2">
-                <h1 className="text-2xl font-playfair font-semibold text-gray-800 tracking-wider flex items-center gap-2">
-                  <img
-                    src="images/logo_pd.png"
-                    alt="Paradisse Design Logo"
-                    className="w-8 h-8 object-contain ml-2"
-                  />
-                  PARADISSE DESIGN
-                </h1>
-              </a>
+              <h1 className="text-2xl font-playfair font-semibold text-gray-800 tracking-wider flex items-center gap-2">
+                <img
+                  src="images/logo_pd.png"
+                  alt="Paradisse Design Logo"
+                  className="w-8 h-8 object-contain ml-2"
+                />
+                PARADISSE DESIGN
+              </h1>
 
               {/* Botón de hamburguesa para móvil */}
               <div className="md:hidden">
@@ -300,16 +251,12 @@
                 </button>
               </div>
 
-              {/* Menú de navegación - Condicionalmente visible para móvil */}
-              <nav
-                className={`md:block ${
-                  isMobileMenuOpen ? "block" : "hidden"
-                } absolute md:relative top-full left-0 w-full md:w-auto bg-white md:bg-transparent shadow-md md:shadow-none py-4 md:py-0`}
-              >
-                <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 items-center">
+              {/* Menú de navegación para escritorio */}
+              <nav className="hidden md:block">
+                <ul className="flex space-x-8">
                   <li>
                     <a
-                      href="servicios.html"
+                      href="index.html#servicios"
                       className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
                     >
                       Servicios
@@ -325,10 +272,18 @@
                   </li>
                   <li>
                     <a
-                      href="catalogo.html"
+                      href="index.html#catalogo"
                       className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
                     >
                       Catálogo
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="index.html#proceso"
+                      className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
+                    >
+                      Proceso
                     </a>
                   </li>
                   <li>
@@ -342,313 +297,388 @@
                 </ul>
               </nav>
             </div>
+
+            {/* Menú de navegación para móvil (aparece desde la derecha) */}
+            <nav
+              className={`md:hidden fixed top-0 right-0 w-64 h-full bg-white shadow-lg p-6 mobile-menu ${
+                isMobileMenuOpen ? "open" : ""
+              }`}
+            >
+              <button
+                onClick={toggleMobileMenu}
+                className="absolute top-4 right-4 text-gray-700 hover:text-amber-800 focus:outline-none"
+              >
+                <svg
+                  className="w-8 h-8"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  ></path>
+                </svg>
+              </button>
+              <ul className="flex flex-col space-y-6 mt-10">
+                <li>
+                  <a
+                    href="index.html#servicios"
+                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
+                    onClick={closeMobileMenu}
+                  >
+                    Servicios
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="galeria.html"
+                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
+                    onClick={closeMobileMenu}
+                  >
+                    Galería
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="index.html#catalogo"
+                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
+                    onClick={closeMobileMenu}
+                  >
+                    Catálogo
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="index.html#proceso"
+                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
+                    onClick={closeMobileMenu}
+                  >
+                    Proceso
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="disena.html"
+                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
+                    onClick={closeMobileMenu}
+                  >
+                    Diseña con Paradisse
+                  </a>
+                </li>
+              </ul>
+            </nav>
           </header>
         );
       };
-     
 
-      const Carousel = ({ items, intervalTime = 3000, type = "image" }) => {
-        const [currentIndex, setCurrentIndex] = useState(0);
-        const carouselInnerRef = useRef(null);
+      const Gallery = () => {
+        const [filter, setFilter] = useState("all"); // 'all', 'real', 'renders'
 
-        useEffect(() => {
-          const interval = setInterval(() => {
-            setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
-          }, intervalTime);
-          return () => clearInterval(interval);
-        }, [items.length, intervalTime]);
+        const images = [
+          // Proyectos Reales
+          {
+            src: "images/galeria/real_cocina_1.jpg",
+            alt: "Cocina moderna con isla central",
+            type: "real",
+            description: "Diseño y fabricación de cocina a medida con acabados en madera y mármol.",
+          },
+          {
+            src: "images/galeria/real_dormitorio_1.jpg",
+            alt: "Dormitorio principal con cabecero tapizado",
+            type: "real",
+            description: "Mobiliario de dormitorio a medida, incluyendo cabecero y mesas de luz.",
+          },
+          {
+            src: "images/galeria/real_comedor_1.jpg",
+            alt: "Comedor con mesa de madera maciza y sillas de diseño",
+            type: "real",
+            description: "Mesa de comedor artesanal y sillas ergonómicas para un ambiente acogedor.",
+          },
+          {
+            src: "images/galeria/real_bano_1.jpg",
+            alt: "Mueble de baño flotante con doble bacha",
+            type: "real",
+            description: "Vanitory a medida con almacenamiento integrado y diseño minimalista.",
+          },
+          {
+            src: "images/galeria/real_recepcion_1.jpg",
+            alt: "Mesa de recepción para oficina",
+            type: "real",
+            description: "Mesa de recepción con diseño moderno y funcional para espacios corporativos.",
+          },
+          {
+            src: "images/galeria/real_cocina_2.jpg",
+            alt: "Cocina integral con despensa oculta",
+            type: "real",
+            description: "Cocina completa con soluciones de almacenamiento inteligente y acabados premium.",
+          },
+          {
+            src: "images/galeria/real_living_1.jpg",
+            alt: "Living con sofá modular y mesa de centro",
+            type: "real",
+            description: "Diseño de living contemporáneo con muebles a medida y acabados en madera."
+          },
+                    {
+            src: "images/galeria/real_living_1.jpg",
+            alt: "Living con mueble de TV y biblioteca integrada",
+            type: "real",
+            description: "Centro de entretenimiento a medida con biblioteca y almacenamiento oculto.",
+          },
+          {
+            src: "images/galeria/real_escritorio_1.jpg",
+            alt: "Escritorio ejecutivo con cajonera lateral",
+            type: "real",
+            description: "Mobiliario de oficina personalizado con detalles en cuero y madera noble.",
+          },
+          {
+            src: "images/galeria/real_placard_1.jpg",
+            alt: "Placard empotrado con puertas corredizas",
+            type: "real",
+            description: "Sistema de guardado optimizado con divisiones internas personalizadas.",
+          },
+          {
+            src: "images/galeria/real_bar_1.jpg",
+            alt: "Barra de bar con taburetes altos",
+            type: "real",
+            description: "Espacio de bar doméstico con iluminación LED y acabados sofisticados.",
+          },
+          {
+            src: "images/galeria/real_estanteria_1.jpg",
+            alt: "Estantería modular para living",
+            type: "real",
+            description: "Sistema modular de estanterías con combinación de espacios abiertos y cerrados.",
+          },
+          {
+            src: "images/galeria/real_mesa_centro_1.jpg",
+            alt: "Mesa de centro con cajones ocultos",
+            type: "real",
+            description: "Mesa de centro funcional con almacenamiento secreto y tapa deslizable.",
+          },
+          {
+            src: "images/galeria/real_cabecero_1.jpg",
+            alt: "Cabecero tapizado con mesas de luz flotantes",
+            type: "real",
+            description: "Conjunto de dormitorio con cabecero acolchado y mesas suspendidas.",
+          },
+          {
+            src: "images/galeria/real_cocina_rustica_1.jpg",
+            alt: "Cocina rústica con isla de madera maciza",
+            type: "real",
+            description: "Diseño rústico-moderno con madera recuperada y herrajes artesanales.",
+          },
+          {
+            src: "images/galeria/real_biblioteca_1.jpg",
+            alt: "Biblioteca de piso a techo con escalera",
+            type: "real",
+            description: "Biblioteca clásica con escalera deslizable y molduras decorativas.",
+          },
+          {
+            src: "images/galeria/real_vestidor_1.jpg",
+            alt: "Vestidor en L con isla central",
+            type: "real",
+            description: "Vestidor de lujo con isla central, espejos y iluminación perimetral.",
+          },
 
-        useEffect(() => {
-          if (carouselInnerRef.current) {
-            carouselInnerRef.current.style.transform = `translateX(-${
-              currentIndex * 100
-            }%)`;
-          }
-        }, [currentIndex]);
+          // Renders 3D
+          {
+            src: "images/galeria/render_living_1.jpg",
+            alt: "Render de living con sofá modular y mesa de centro",
+            type: "render",
+            description: "Propuesta de living con mobiliario personalizado y detalles decorativos.",
+          },
+          {
+            src: "images/galeria/render_oficina_1.jpg",
+            alt: "Render de oficina en casa con escritorio y estantería",
+            type: "render",
+            description: "Visualización de espacio de trabajo funcional y estético.",
+          },
+          {
+            src: "images/galeria/render_biblioteca_1.jpg",
+            alt: "Render de biblioteca empotrada con escalera",
+            type: "render",
+            description: "Diseño de biblioteca a medida, optimizando el espacio y la funcionalidad.",
+          },
+          {
+            src: "images/galeria/render_vestidor_1.jpg",
+            alt: "Render de vestidor con iluminación LED",
+            type: "render",
+            description: "Propuesta de vestidor organizado con módulos a medida y detalles de lujo.",
+          },
+          {
+            src: "images/galeria/render_terraza_1.jpg",
+            alt: "Render de mobiliario para terraza",
+            type: "render",
+            description: "Diseño de muebles de exterior para crear un ambiente relajante en la terraza.",
+          },
+          {
+            src: "images/galeria/render_cocina_moderna_1.jpg",
+            alt: "Render de cocina minimalista con isla",
+            type: "render",
+            description: "Propuesta de cocina contemporánea con líneas limpias y materiales premium.",
+          },
+          {
+            src: "images/galeria/render_dormitorio_juvenil_1.jpg",
+            alt: "Render de dormitorio juvenil con escritorio integrado",
+            type: "render",
+            description: "Diseño funcional para adolescentes con zona de estudio y descanso.",
+          },
+          {
+            src: "images/galeria/render_comedor_formal_1.jpg",
+            alt: "Render de comedor formal con aparador",
+            type: "render",
+            description: "Visualización de comedor elegante con mesa extensible y aparador a medida.",
+          },
+          {
+            src: "images/galeria/render_bano_spa_1.jpg",
+            alt: "Render de baño tipo spa con bañera exenta",
+            type: "render",
+            description: "Propuesta de baño de lujo con elementos de relajación y bienestar.",
+          },
+          {
+            src: "images/galeria/render_sala_juegos_1.jpg",
+            alt: "Render de sala de juegos con mesa de pool",
+            type: "render",
+            description: "Diseño de espacio recreativo con mobiliario especializado y bar integrado.",
+          },
+          {
+            src: "images/galeria/render_home_theater_1.jpg",
+            alt: "Render de home theater con butacas reclinables",
+            type: "render",
+            description: "Sala de cine en casa con acústica optimizada y mobiliario especializado.",
+          },
+          {
+            src: "images/galeria/render_cocina_industrial_1.jpg",
+            alt: "Render de cocina estilo industrial",
+            type: "render",
+            description: "Propuesta de cocina con estética industrial y funcionalidad profesional.",
+          },
+          {
+            src: "images/galeria/render_oficina_ejecutiva_1.jpg",
+            alt: "Render de oficina ejecutiva con sala de reuniones",
+            type: "render",
+            description: "Diseño corporativo con mobiliario de alta gama y tecnología integrada.",
+          },
+          {
+            src: "images/galeria/render_nursery_1.jpg",
+            alt: "Render de habitación de bebé con cuna convertible",
+            type: "render",
+            description: "Diseño tierno y funcional para los primeros años con muebles adaptables.",
+          },
+          {
+            src: "images/galeria/render_walk_in_closet_1.jpg",
+            alt: "Render de walk-in closet de lujo",
+            type: "render",
+            description: "Vestidor de alta gama con sistemas de organización y acabados premium.",
+          },
+          {
+            src: "images/galeria/render_cocina_campo_1.jpg",
+            alt: "Render de cocina estilo campo con desayunador",
+            type: "render",
+            description: "Propuesta rústica-elegante perfecta para casas de fin de semana.",
+          },
+        ];
 
-        const goToNext = () => {
-          setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
-        };
-
-        const goToPrev = () => {
-          setCurrentIndex(
-            (prevIndex) => (prevIndex - 1 + items.length) % items.length
-          );
-        };
-
-        const goToSlide = (index) => {
-          setCurrentIndex(index);
-        };
+        const filteredImages = images.filter(image => filter === 'all' || image.type === filter);
 
         return (
-          <div className="carousel-container w-full max-w-4xl mx-auto h-96 md:h-[500px] relative zoom-in">
-            <div className="carousel-inner h-full" ref={carouselInnerRef}>
-              {items.map((item, index) => (
-                <div key={index} className="carousel-item h-full">
-                  {type === "image" ? (
-                    <img
-                      src={item.src}
-                      alt={item.alt}
-                      className="object-cover w-full h-full"
-                    />
-                  ) : (
-                    <video controls className="object-cover w-full h-full">
-                      <source src={item.src} type="video/mp4" />
-                
-                    </video>
-                  )}
-                </div>
-              ))}
-            </div>
+          <section id="galeria" className="py-20 pt-32 bg-white fade-in">
+            <div className="container mx-auto px-4 max-w-6xl">
+              <h2 className="text-4xl font-playfair font-bold text-center mb-10 text-stone-900 slide-left">
+                Nuestra Galería de Proyectos
+              </h2>
+              <p className="text-center text-lg text-stone-700 font-montserrat mb-12 slide-right">
+                Explora nuestros trabajos, desde proyectos reales finalizados hasta visualizaciones 3D que dan vida a tus ideas.
+              </p>
 
-          
-            <button onClick={goToPrev} className="carousel-button left">
-              &lt;
-            </button>
-            <button onClick={goToNext} className="carousel-button right">
-              &gt;
-            </button>
-      
-            <div className="carousel-dots">
-              {items.map((_, idx) => (
-                <span
-                  key={idx}
-                  className={`carousel-dot${idx === currentIndex ? " active" : ""}`}
-                  onClick={() => goToSlide(idx)}
-                ></span>
-              ))}
-            </div>
-          </div>
-        );
-      };
-
-      // Main Gallery
-      const GalleryPage = () => {
-        // Data para Render Images Carousel
-        const renderImages = [
-          {
-            src: "images/renders/render1.jpg",
-            alt: "Render de cocina moderna con isla central",
-          },
-          {
-            src: "images/renders/render2.jpg",
-            alt: "Render de dormitorio principal con cabecero de madera",
-          },
-          {
-            src: "images/renders/render3.jpg",
-            alt: "Render de sala de estar con mobiliario minimalista",
-          },
-          {
-            src: "images/renders/render4.jpg",
-            alt: "Render de baño de lujo con acabados en mármol",
-          },
-          {
-            src: "images/renders/render5.jpg",
-            alt: "Render de oficina en casa con escritorio integrado",
-          },
-        ];
-
-        // Data para Real Images Carousel
-        const realImages = [
-          {
-            src: "images/reales/real1.jpg",
-            alt: "Foto real de biblioteca a medida instalada",
-          },
-          {
-            src: "images/reales/real2.jpg",
-            alt: "Foto real de comedor con mesa de roble y sillas tapizadas",
-          },
-          {
-            src: "images/reales/real3.jpg",
-            alt: "Foto real de mueble de TV con paneles de madera",
-          },
-          {
-            src: "images/reales/real4.jpg",
-            alt: "Foto real de armario empotrado con puertas correderas",
-          },
-          {
-            src: "images/reales/real5.jpg",
-            alt: "Foto real de recibidor con consola flotante",
-          },
-        ];
-
-        // Data para Project Videos
-        const projectVideos = [
-          {
-            src: "videos/video1.mp4",
-            alt: "Video de presentación de proyecto de cocina",
-          },
-          {
-            src: "videos/video2.mp4",
-            alt: "Video timelapse de instalación de mueble",
-          },
-          {
-            src: "videos/video3.mp4",
-            alt: "Video tour virtual de un apartamento amueblado",
-          },
-        ];
-
-        // Data para Static Images Grid
-        const staticImages = [
-          {
-            src: "images/estaticas/estatica1.jpg",
-            alt: "Detalle de acabado en madera noble y herrajes dorados",
-          },
-          {
-            src: "images/estaticas/estatica2.jpg",
-            alt: "Textura de tapizado de terciopelo en un sofá de diseño",
-          },
-          {
-            src: "images/estaticas/estatica3.jpg",
-            alt: "Mesa de centro con superficie de mármol pulido y base metálica",
-          },
-          {
-            src: "images/estaticas/estatica4.jpg",
-            alt: "Iluminación ambiental destacando un mueble de diseño",
-          },
-          {
-            src: "images/estaticas/estatica5.jpg",
-            alt: "Combinación de materiales: cuero, madera y metal en un sillón",
-          },
-          {
-            src: "images/estaticas/estatica6.jpg",
-            alt: "Vista de un espacio con mobiliario integrado y armonioso",
-          },
-        ];
-
-        return (
-          <div className="font-montserrat">
-            <Header />
-            <section className="py-20 bg-gradient-to-b from-white via-stone-50 to-amber-50 fade-in pt-32">
-              <div className="container mx-auto px-4 max-w-6xl">
-                <h2 className="text-4xl md:text-5xl font-playfair font-bold text-center mb-16 text-stone-900 slide-left">
-                  Nuestra Galería de Proyectos Exclusivos
-                </h2>
-
-                {/* Sección de Carruseles Horizontales (Renders y Reales) */}
-                <div className="mb-20 p-6 bg-white rounded-xl shadow-xl border border-stone-200">
-                  {" "}
-                  <h3 className="text-3xl font-playfair font-bold text-center mb-10 text-amber-800 slide-right">
-                    Explora Nuestros Diseños
-                  </h3>
-                  <p className="text-stone-700 font-montserrat leading-relaxed text-center mb-12 slide-left max-w-3xl mx-auto">
-                    Sumérgete en la visión de tus futuros espacios con nuestros
-                    renders 3D fotorrealistas y déjate inspirar por la
-                    excelencia de nuestros proyectos reales terminados.
-                  </p>
-                  {/* Contenedor Flexbox para los carruseles */}
-                  <div className="flex flex-col md:flex-row gap-8 justify-center items-start">
-                    {/* Carrusel de Renders */}
-                    <div className="w-full md:w-1/2 flex-shrink-0">
-                      <h4 className="text-2xl font-playfair font-semibold text-center mb-4 text-stone-900">
-                        Renders 3D
-                      </h4>
-                      <Carousel
-                        items={renderImages}
-                        type="image"
-                        intervalTime={3000}
-                      />
-                    </div>
-
-                    {/* Carrusel de Proyectos Reales */}
-                    <div className="w-full md:w-1/2 flex-shrink-0">
-                      <h4 className="text-2xl font-playfair font-semibold text-center mb-4 text-stone-900">
-                        Proyectos Reales
-                      </h4>
-                      <Carousel
-                        items={realImages}
-                        type="image"
-                        intervalTime={4000}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-            
-                <div className="mb-20 p-6 bg-white rounded-xl shadow-xl border border-stone-200">
-                  {" "}
-                  <h3 className="text-3xl font-playfair font-bold text-center mb-10 text-amber-800 slide-right">
-                    Videos de Proyectos
-                  </h3>
-                  <p className="text-stone-700 font-montserrat leading-relaxed text-center mb-12 slide-left max-w-3xl mx-auto">
-                    Descubre el proceso creativo y el resultado final de
-                    nuestros trabajos a través de videos inmersivos.
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {projectVideos.map((video, index) => (
-                      <div
-                        key={index}
-                        className="video-grid-item rounded-xl shadow-lg border border-stone-200 overflow-hidden group zoom-in"
-                      >
-                        <video controls className="w-full h-full object-cover">
-                          <source src={video.src} type="video/mp4" />
-                          Tu navegador no soporta la etiqueta de video.
-                        </video>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Sección de Imágenes Estáticas: Inspiración y Detalles */}
-                <section
-                  id="inspiracion"
-                  className="py-10 p-6 bg-white rounded-xl shadow-xl border border-stone-200 fade-in"
+              <div className="flex justify-center space-x-4 mb-12 zoom-in">
+                <button
+                  onClick={() => setFilter("all")}
+                  className={`px-6 py-3 rounded-full font-montserrat font-semibold transition-all ${
+                    filter === "all"
+                      ? "bg-amber-800 text-white shadow-lg"
+                      : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                  }`}
                 >
-                  {" "}
-                  {/* Added container for luxury feel */}
-                  <h3 className="text-3xl font-playfair font-bold text-center mb-10 text-amber-800 slide-left">
-                    Inspiración y Detalles
-                  </h3>
-                  <p className="text-stone-700 font-montserrat leading-relaxed text-center mb-12 slide-right max-w-3xl mx-auto">
-                    Una selección curada de imágenes que capturan la esencia de
-                    nuestros diseños, la riqueza de los materiales y la atención
-                    al detalle que nos distingue en cada pieza.
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {staticImages.map((image, index) => (
-                      <div
-                        key={index}
-                        className="gallery-item relative overflow-hidden rounded-xl shadow-lg border border-stone-200 group zoom-in"
-                      >
-                        <img
-                          src={image.src}
-                          alt={image.alt}
-                          className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                        <div className="gallery-overlay absolute inset-0 flex items-center justify-center p-4">
-                          <span className="text-white font-montserrat text-center text-lg">
-                            {image.alt}
-                          </span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </section>
+                  Todos ({images.length})
+                </button>
+                <button
+                  onClick={() => setFilter("real")}
+                  className={`px-6 py-3 rounded-full font-montserrat font-semibold transition-all ${
+                    filter === "real"
+                      ? "bg-amber-800 text-white shadow-lg"
+                      : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                  }`}
+                >
+                  Proyectos Reales ({images.filter(img => img.type === 'real').length})
+                </button>
+                <button
+                  onClick={() => setFilter("render")}
+                  className={`px-6 py-3 rounded-full font-montserrat font-semibold transition-all ${
+                    filter === "render"
+                      ? "bg-amber-800 text-white shadow-lg"
+                      : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                  }`}
+                >
+                  Renders 3D ({images.filter(img => img.type === 'render').length})
+                </button>
+              </div>
 
-                <div className="text-center mt-20 fade-in p-8 bg-amber-50/50 rounded-xl shadow-lg border border-amber-200">
-                  {" "}
-                  <h3 className="text-3xl md:text-4xl font-playfair font-bold text-stone-900 mb-6">
-                    ¿Te inspiraste en la excelencia?
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredImages.map((image, index) => (
+                  <div key={index} className="gallery-item zoom-in">
+                    <img src={image.src} alt={image.alt} />
+                    <div className="gallery-overlay">
+                      <h3>{image.alt.split(" con ")[0]}</h3>
+                      <p>{image.description}</p>
+                      <span className="mt-2 text-sm font-bold uppercase">
+                        {image.type === 'real' ? 'Proyecto Real' : 'Render 3D'}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-16 text-center fade-in">
+                <div className="bg-amber-50 rounded-xl p-8 mb-8">
+                  <h3 className="text-2xl font-playfair font-bold text-stone-900 mb-4">
+                    ¿Te inspiraste con algún proyecto?
                   </h3>
-                  <p className="text-lg md:text-xl text-stone-700 font-montserrat mb-8 max-w-2xl mx-auto">
-                    Permítenos transformar tu visión en una realidad tangible.
-                    Contáctanos hoy mismo para una consulta personalizada y
-                    comienza a diseñar el espacio de tus sueños.
+                  <p className="text-lg text-stone-700 font-montserrat mb-6">
+                    Cada mueble cuenta una historia única. Permítenos crear la tuya con diseños personalizados o ya diseñados que reflejen tu estilo y necesidades.
                   </p>
-                  <a
-                    href="https://wa.me/5491172299130" target="_blank"
-                    className="inline-block bg-amber-800 hover:bg-amber-700 text-white px-10 py-4 rounded-lg font-playfair font-semibold text-xl transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
-                  >
-                    Solicitar Consulta Exclusiva
-                  </a>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a
+                      href="https://wa.me/5491130890681?text=Hola!%20Me%20gustaría%20solicitar%20una%20consulta%20para%20un%20proyecto%20de%20muebles%20a%20medida."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block bg-amber-800 hover:bg-amber-700 text-white px-8 py-4 rounded-lg transition-colors font-montserrat font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                    >
+                    Consulta por WhatsApp
+                    </a>
+                    <a
+                      href="disena.html"
+                      className="inline-block bg-stone-600 hover:bg-stone-700 text-white px-8 py-4 rounded-lg transition-colors font-montserrat font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                    >
+                    Diseña con Nosotros
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="text-center">
+                  <p className="text-stone-600 font-montserrat">
+                    <strong>Más de 300 proyectos realizados</strong> • Diseño personalizado • Fabricación profesional • Materiales de alta calidad • Atención al detalle • Satisfacción garantizada
+                  </p>
                 </div>
               </div>
-            </section>
-            <Footer />
-          </div>
+            </div>
+          </section>
         );
       };
- // Footer
+
       const Footer = () => (
         <footer className="bg-gradient-to-b from-[#e7ddcf] to-[#f3ece2] border-t border-black/10 fade-in">
           <div className="max-w-5xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -660,17 +690,19 @@
               />
               <span>Paradisse Design</span>
             </div>
-            <nav className="flex gap-3">
+            <nav className="flex gap-4">
               <a
                 href="https://www.instagram.com/paradisse.design"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="px-4 py-2 rounded-full bg-[#6b4f3b] text-white shadow transition bounce"
               >
                 Instagram
               </a>
               <a
-                href="https://wa.me/5491172299130"
+                href="https://wa.me/5491130890681"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="px-4 py-2 rounded-full bg-[#8c6e54] text-white shadow transition bounce"
               >
                 WhatsApp
@@ -679,10 +711,20 @@
           </div>
         </footer>
       );
-      // Render App
-      ReactDOM.render(<GalleryPage />, document.getElementById("root"));
 
-      // IntersectionObserver para animations
+      const App = () => {
+        return (
+          <div className="font-montserrat">
+            <Header />
+            <Gallery />
+            <Footer />
+          </div>
+        );
+      };
+
+      ReactDOM.render(<App />, document.getElementById("root"));
+
+      // IntersectionObserver para animaciones
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {

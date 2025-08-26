@@ -230,7 +230,7 @@
                 <ul className="flex space-x-8">
                   <li>
                     <a
-                      href="index.html#servicios"
+                      href="servicios.html  "
                       className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
                     >
                       Servicios
@@ -238,7 +238,7 @@
                   </li>
                   <li>
                     <a
-                      href="index.html#galeria"
+                      href="galeria.html"
                       className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
                     >
                       Galería
@@ -258,14 +258,6 @@
                       className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
                     >
                       Proceso
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="index.html#contacto"
-                      className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
-                    >
-                      Contacto
                     </a>
                   </li>
                   <li>
@@ -335,6 +327,15 @@
                 </li>
                 <li>
                   <a
+                    href="index.html#contacto"
+                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
+                    onClick={closeMobileMenu}
+                  >
+                    Contacto
+                  </a>
+                </li>
+                <li>
+                  <a
                     href="disena.html"
                     className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
                     onClick={closeMobileMenu}
@@ -349,7 +350,12 @@
       };
 
       const CatalogPage = () => {
-        const handleContactProduct = (productName, category, description, dimensions) => {
+        const handleContactProduct = (
+          productName,
+          category,
+          description,
+          dimensions
+        ) => {
           const message = `Hola, me interesa obtener más información sobre el siguiente producto de su catálogo:
 
 Producto: ${productName}
@@ -365,7 +371,10 @@ Me gustaría conocer:
 
           const whatsappMessage = encodeURIComponent(message);
           // Reemplaza '5491130890681' con el número de WhatsApp deseado
-          window.open(`https://wa.me/5491172299130?text=${whatsappMessage}`, '_blank');
+          window.open(
+            `https://wa.me/5491130890681?text=${whatsappMessage}`,
+            "_blank"
+          );
         };
 
         const tvRacks = [
@@ -373,35 +382,40 @@ Me gustaría conocer:
             id: 1,
             name: "Rack TV Minimalista",
             image: "images/rack_tv_1.jpg",
-            description: "Diseño limpio y moderno, ideal para espacios contemporáneos.",
+            description:
+              "Diseño limpio y moderno, ideal para espacios contemporáneos.",
             dimensions: "Largo: 240cm, Alto: 220cm",
           },
           {
             id: 2,
             name: "Rack TV Industrial",
             image: "images/rack_tv_2.jpg",
-            description: "Combinación de metal y madera, estilo robusto y funcional.",
+            description:
+              "Combinación de metal y madera, estilo robusto y funcional.",
             dimensions: "Largo: 250cm, Alto: 230cm",
           },
           {
             id: 3,
             name: "Rack TV Nórdico",
             image: "images/rack_tv_3.jpg",
-            description: "Líneas suaves y tonos claros, aporta calidez y luminosidad.",
+            description:
+              "Líneas suaves y tonos claros, aporta calidez y luminosidad.",
             dimensions: "Largo: 260cm, Alto: 225cm",
           },
           {
             id: 4,
             name: "Rack TV Flotante",
             image: "images/rack_tv_4.jpg",
-            description: "Optimiza el espacio y crea un ambiente ligero y sofisticado.",
+            description:
+              "Optimiza el espacio y crea un ambiente ligero y sofisticado.",
             dimensions: "Largo: 270cm, Alto: 240cm",
           },
           {
             id: 5,
             name: "Rack TV Clásico",
             image: "images/rack_tv_5.jpg",
-            description: "Elegancia atemporal con detalles tallados y acabados refinados.",
+            description:
+              "Elegancia atemporal con detalles tallados y acabados refinados.",
             dimensions: "Largo: 245cm, Alto: 235cm",
           },
         ];
@@ -410,36 +424,41 @@ Me gustaría conocer:
           {
             id: 1,
             name: "Cocina Moderna con Isla",
-            image: "images/cocina_1.jpg",            
-            description: "Diseño funcional con isla central, ideal para la vida familiar.",
+            image: "images/cocina_1.jpg",
+            description:
+              "Diseño funcional con isla central, ideal para la vida familiar.",
             dimensions: "Medidas personalizables",
           },
           {
             id: 2,
             name: "Cocina Rústica Chic",
             image: "images/cocina_2.jpg",
-            description: "Encanto campestre con toques de sofisticación y materiales naturales.",
+            description:
+              "Encanto campestre con toques de sofisticación y materiales naturales.",
             dimensions: "Medidas personalizables",
           },
           {
             id: 3,
             name: "Cocina Minimalista",
             image: "images/cocina_3.jpg",
-            description: "Líneas puras y espacios despejados, máxima funcionalidad.",
+            description:
+              "Líneas puras y espacios despejados, máxima funcionalidad.",
             dimensions: "Medidas personalizables",
           },
           {
             id: 4,
             name: "Cocina Industrial",
             image: "images/cocina_4.jpg",
-            description: "Estilo urbano con elementos de metal y madera, gran resistencia.",
+            description:
+              "Estilo urbano con elementos de metal y madera, gran resistencia.",
             dimensions: "Medidas personalizables",
           },
           {
             id: 5,
             name: "Cocina Clásica Renovada",
             image: "images/cocina_5.jpg",
-            description: "Tradición y modernidad en un diseño atemporal y elegante.",
+            description:
+              "Tradición y modernidad en un diseño atemporal y elegante.",
             dimensions: "Medidas personalizables",
           },
         ];
@@ -449,35 +468,40 @@ Me gustaría conocer:
             id: 1,
             name: "Dormitorio Principal Sereno",
             image: "images/dormitorio_1.jpg",
-            description: "Ambiente de calma y confort, con mobiliario a medida.",
+            description:
+              "Ambiente de calma y confort, con mobiliario a medida.",
             dimensions: "Medidas personalizables",
           },
           {
             id: 2,
             name: "Dormitorio Juvenil Funcional",
             image: "images/dormitorio_2.jpg",
-            description: "Diseño inteligente para optimizar el espacio y la organización.",
+            description:
+              "Diseño inteligente para optimizar el espacio y la organización.",
             dimensions: "Medidas personalizables",
           },
           {
             id: 3,
             name: "Dormitorio Nórdico",
             image: "images/dormitorio_3.jpg",
-            description: "Simplicidad y calidez con materiales naturales y colores suaves.",
+            description:
+              "Simplicidad y calidez con materiales naturales y colores suaves.",
             dimensions: "Medidas personalizables",
           },
           {
             id: 4,
             name: "Dormitorio de Invitados Acogedor",
             image: "images/dormitorio_4.jpg",
-            description: "Espacio confortable y bien equipado para recibir visitas.",
+            description:
+              "Espacio confortable y bien equipado para recibir visitas.",
             dimensions: "Medidas personalizables",
           },
           {
             id: 5,
             name: "Dormitorio de Lujo",
             image: "images/dormitorio_5.jpg",
-            description: "Exclusividad y sofisticación en cada detalle, máximo confort.",
+            description:
+              "Exclusividad y sofisticación en cada detalle, máximo confort.",
             dimensions: "Medidas personalizables",
           },
         ];
@@ -489,7 +513,8 @@ Me gustaría conocer:
                 {title}
               </h2>
               <p className="text-center text-stone-700 font-montserrat mb-8">
-                Las medidas indicadas son de los modelos en las fotos. Ofrecemos ajustes a medida, los cuales pueden tener un costo adicional.
+                Las medidas indicadas son de los modelos en las fotos. Ofrecemos
+                ajustes a medida, los cuales pueden tener un costo adicional.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {products.map((product) => (
@@ -509,11 +534,19 @@ Me gustaría conocer:
                       {product.description}
                     </p>
                     <p className="text-stone-700 font-montserrat text-sm mb-4">
-                      <span className="font-semibold">Medidas del modelo:</span> {product.dimensions}
+                      <span className="font-semibold">Medidas del modelo:</span>{" "}
+                      {product.dimensions}
                     </p>
                     <button
                       type="button"
-                      onClick={() => handleContactProduct(product.name, category, product.description, product.dimensions)}
+                      onClick={() =>
+                        handleContactProduct(
+                          product.name,
+                          category,
+                          product.description,
+                          product.dimensions
+                        )
+                      }
                       className="bg-amber-800 hover:bg-amber-700 text-white px-4 py-2 rounded transition-colors font-montserrat text-sm"
                     >
                       Solicitar más info
@@ -527,9 +560,21 @@ Me gustaría conocer:
 
         return (
           <div className="font-montserrat pt-20">
-            <ProductGrid title="Racks de TV" products={tvRacks} category="Rack de TV" />
-            <ProductGrid title="Cocinas" products={kitchens} category="Cocina" />
-            <ProductGrid title="Dormitorios" products={bedrooms} category="Dormitorio" />
+            <ProductGrid
+              title="Racks de TV"
+              products={tvRacks}
+              category="Rack de TV"
+            />
+            <ProductGrid
+              title="Cocinas"
+              products={kitchens}
+              category="Cocina"
+            />
+            <ProductGrid
+              title="Dormitorios"
+              products={bedrooms}
+              category="Dormitorio"
+            />
           </div>
         );
       };
