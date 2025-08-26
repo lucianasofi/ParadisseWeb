@@ -177,194 +177,21 @@
     <script type="text/babel">
       const { useState, useEffect } = React;
 
-      const Header = () => {
-        const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-        const toggleMobileMenu = () => {
-          setIsMobileMenuOpen(!isMobileMenuOpen);
-        };
-
-        const closeMobileMenu = () => {
-          setIsMobileMenuOpen(false);
-        };
-
-        return (
-          <header className="fixed w-full bg-white bg-opacity-90 z-50 shadow-sm fade-in">
-            <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-              <a href="index.html" className="flex items-center gap-2">
-                <h1 className="text-2xl font-playfair font-semibold text-gray-800 tracking-wider flex items-center gap-2">
-                  <img
-                    src="images/logo_pd.png"
-                    alt="Paradisse Design Logo"
-                    className="w-8 h-8 object-contain ml-2"
-                  />
-                  PARADISSE DESIGN
-                </h1>
-              </a>
-
-              {/* Botón de hamburguesa para móvil */}
-              <div className="md:hidden">
-                <button
-                  onClick={toggleMobileMenu}
-                  className="text-gray-700 hover:text-amber-800 focus:outline-none"
-                >
-                  <svg
-                    className="w-8 h-8"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M4 6h16M4 12h16M4 18h16"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
-
-              {/* Menú de navegación para escritorio */}
-              <nav className="hidden md:block">
-                <ul className="flex space-x-8">
-                  <li>
-                    <a
-                      href="#servicios"
-                      className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
-                    >
-                      Servicios
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#galeria"
-                      className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
-                    >
-                      Galería
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#catalogo"
-                      className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
-                    >
-                      Catálogo
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#proceso"
-                      className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
-                    >
-                      Proceso
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#contacto"
-                      className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
-                    >
-                      Contacto
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="disena.html"
-                      className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
-                    >
-                      Diseña con Paradisse
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-
-            {/* Menú de navegación para móvil (aparece desde la derecha) */}
-            <nav
-              className={`md:hidden fixed top-0 right-0 w-64 h-full bg-white shadow-lg p-6 mobile-menu ${
-                isMobileMenuOpen ? "open" : ""
-              }`}
-            >
-              <button
-                onClick={toggleMobileMenu}
-                className="absolute top-4 right-4 text-gray-700 hover:text-amber-800 focus:outline-none"
-              >
-                <svg
-                  className="w-8 h-8"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  ></path>
-                </svg>
-              </button>
-              <ul className="flex flex-col space-y-6 mt-10">
-                <li>
-                  <a
-                    href="#servicios"
-                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
-                    onClick={closeMobileMenu}
-                  >
-                    Servicios
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="galeria.html"
-                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
-                    onClick={closeMobileMenu}
-                  >
-                    Galería
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#catalogo"
-                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
-                    onClick={closeMobileMenu}
-                  >
-                    Catálogo
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#proceso"
-                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
-                    onClick={closeMobileMenu}
-                  >
-                    Proceso
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#contacto"
-                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
-                    onClick={closeMobileMenu}
-                  >
-                    Contacto
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="disena.html"
-                    className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat text-lg block"
-                    onClick={closeMobileMenu}
-                  >
-                    Diseña con Paradisse
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </header>
-        );
-      };
+    const Header = () => (
+      <header className="fixed w-full bg-white bg-opacity-90 z-50 shadow-sm fade-in">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <h1 className="text-2xl font-playfair font-semibold text-gray-800 tracking-wider">PARADISSE DESIGN</h1>
+          <nav className="hidden md:block">
+            <ul className="flex space-x-8">
+              <li><a href="#servicios" className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat">Servicios</a></li>
+              <li><a href="#galeria" className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat">Galería</a></li>
+              <li><a href="#proceso" className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat">Proceso</a></li>
+              <li><a href="#contacto" className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat">Contacto</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+    );
 
       const Hero = () => (
         <section className="hero-pattern h-screen pt-32 flex items-center fade-in">
@@ -500,115 +327,61 @@
           window.location.href = "#contacto";
         };
 
-        return (
-          <section
-            id="destacado"
-            className="py-20 bg-gradient-to-b from-[#f3ece2] via-[#e7ddcf] to-[#d9cbb8] fade-in"
-          >
-            <div className="container mx-auto px-4 max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-12">
-              {/* Productos Destacados */}
-              <div className="flex flex-col items-center slide-left">
-                <h2 className="text-4xl font-playfair font-bold text-center mb-10 text-[#4e3a2e]">
-                  <a
-                    href="galeria.html"
-                    className="cursor-pointer hover:underline"
-                  >
-                    Productos Destacados
-                  </a>
-                </h2>
-                <div className="relative w-full max-w-md h-96 overflow-hidden rounded-lg shadow-lg border border-[#a38f62]">
-                  <img
-                    src={images[currentIndex].src}
-                    alt={images[currentIndex].alt}
-                    className="w-full h-full object-cover transition-transform duration-500"
-                  />
-                  <button
-                    type="button"
-                    onClick={prevImage}
-                    className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-[#6b4f3b] bg-opacity-80 text-white p-3 rounded-full shadow-md hover:bg-opacity-100 transition"
-                  >
-                    &lt;
-                  </button>
-                  <button
-                    type="button"
-                    onClick={nextImage}
-                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-[#6b4f3b] bg-opacity-80 text-white p-3 rounded-full shadow-md hover:bg-opacity-100 transition"
-                  >
-                    &gt;
-                  </button>
-                </div>
-                <div className="mt-8 text-center">
-                  <h3 className="text-2xl font-playfair font-bold text-[#4e3a2e] mb-2">
-                    {images[currentIndex].alt.split(" - ")[0]}
-                  </h3>
-                  <p className="text-[#6b4f3b] font-montserrat leading-relaxed text-lg mb-4">
-                    {images[currentIndex].alt.split(" - ")[1]}
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      handleContactProduct(images[currentIndex].name)
-                    }
-                    className="bg-amber-800 hover:bg-amber-700 text-white px-4 py-2 rounded transition-colors font-montserrat text-sm"
-                  >
-                    Solicitar más info
-                  </button>
-                </div>
+      return (
+        <section id="tu-diseno" className="py-20 bg-white fade-in">
+          <div className="container mx-auto px-4 max-w-5xl">
+            <h2 className="text-4xl font-playfair font-bold text-center mb-10 text-stone-900 slide-left">Renders 3D Interactivos</h2>
+            <p className="text-stone-700 font-montserrat leading-relaxed text-center mb-8 slide-right">
+              Visualiza muebles 3D reales y cambia el material para ver diferentes acabados.
+            </p>
+            <div className="mb-8 flex flex-col md:flex-row gap-6 items-center justify-center">
+              <div className="slide-left">
+                <label className="block text-lg font-playfair font-semibold mb-2 text-amber-800">Mueble</label>
+                <select
+                  className="w-full border border-stone-300 rounded-lg p-3 bg-amber-50/50 focus:ring-2 focus:ring-amber-600 focus:border-amber-600 outline-none"
+                  value={selectedDesign}
+                  onChange={e => {
+                    setSelectedDesign(Number(e.target.value));
+                    setSelectedMaterial(designs[Number(e.target.value)].materials[0]);
+                  }}
+                >
+                  {designs.map((design, idx) => (
+                    <option key={design.name} value={idx}>{design.name}</option>
+                  ))}
+                </select>
               </div>
-
-              {/* Novedades */}
-              <div className="flex flex-col items-center slide-right">
-                <h2 className="text-4xl font-playfair font-bold text-center mb-10 text-[#4e3a2e]">
-                  <a
-                    href="galeria.html"
-                    className="cursor-pointer hover:underline"
-                  >
-                    Novedades
-                  </a>
-                </h2>
-                <div className="relative w-full max-w-md h-96 overflow-hidden rounded-lg shadow-lg border border-[#a38f62]">
-                  <img
-                    src={novedades[novedadIndex].image}
-                    alt={novedades[novedadIndex].title}
-                    className="w-full h-full object-cover transition-transform duration-500"
-                  />
-                  <button
-                    type="button"
-                    onClick={prevNovedad}
-                    className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-[#6b4f3b] bg-opacity-80 text-white p-3 rounded-full shadow-md hover:bg-opacity-100 transition"
-                  >
-                    &lt;
-                  </button>
-                  <button
-                    type="button"
-                    onClick={nextNovedad}
-                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-[#6b4f3b] bg-opacity-80 text-white p-3 rounded-full shadow-md hover:bg-opacity-100 transition"
-                  >
-                    &gt;
-                  </button>
-                </div>
-                <div className="mt-8 text-center">
-                  <h3 className="text-2xl font-playfair font-bold text-[#4e3a2e] mb-2">
-                    {novedades[novedadIndex].title}
-                  </h3>
-                  <p className="text-[#6b4f3b] font-montserrat leading-relaxed text-lg mb-4">
-                    {novedades[novedadIndex].description}
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      handleContactProduct(novedades[novedadIndex].title)
-                    }
-                    className="bg-amber-800 hover:bg-amber-700 text-white px-4 py-2 rounded transition-colors font-montserrat text-sm"
-                  >
-                    Solicitar más info
-                  </button>
-                </div>
+              <div className="slide-right">
+                <label className="block text-lg font-playfair font-semibold mb-2 text-amber-800">Material</label>
+                <select
+                  className="w-full border border-stone-300 rounded-lg p-3 bg-amber-50/50 focus:ring-2 focus:ring-amber-600 focus:border-amber-600 outline-none"
+                  value={selectedMaterial}
+                  onChange={e => setSelectedMaterial(e.target.value)}
+                >
+                  {designs[selectedDesign].materials.map(material => (
+                    <option key={material} value={material}>{material}</option>
+                  ))}
+                </select>
               </div>
             </div>
-          </section>
-        );
-      };
+            <div className="flex flex-col items-center zoom-in">
+              <div className="w-full h-96 rounded-lg overflow-hidden shadow-lg border border-amber-200 mb-4 flex items-center justify-center bg-amber-50">
+                <iframe
+                  title={designs[selectedDesign].name}
+                  src={designs[selectedDesign].embed + `?autostart=1&ui_materials=1`}
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; vr"
+                  className="w-full h-full"
+                ></iframe>
+              </div>
+              <div className="text-center">
+                <h3 className="text-lg font-playfair font-bold text-stone-900 mb-1">{designs[selectedDesign].name}</h3>
+                <p className="text-stone-700 font-montserrat">Material seleccionado: <span className="font-semibold">{selectedMaterial}</span></p>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    };
 
       const ProductCatalog = ({ setPreselectedProduct }) => {
         const [dolarBlue, setDolarBlue] = useState(null);
@@ -703,290 +476,136 @@
           window.location.href = "#contacto";
         };
 
-        return (
-          <section id="catalogo" className="py-20 bg-white fade-in">
-            <div className="container mx-auto px-4 max-w-6xl">
-              <h2 className="text-4xl font-playfair font-bold text-center mb-10 text-stone-900 slide-left">
-                <a
-                  href="catalogo.html"
-                  className="cursor-pointer hover:underline"
-                >
-                  Catálogo de Productos
-                </a>
-              </h2>
-              <div className="flex justify-center mb-8">
-                <button
-                  type="button"
-                  onClick={() => setCurrency("ARS")}
-                  className={`px-6 py-2 rounded-l-lg font-montserrat font-semibold transition-all ${
-                    currency === "ARS"
-                      ? "bg-amber-800 text-white"
-                      : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                  }`}
-                >
-                  Pesos Argentinos (ARS)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setCurrency("USD")}
-                  className={`px-6 py-2 rounded-r-lg font-montserrat font-semibold transition-all ${
-                    currency === "USD"
-                      ? "bg-amber-800 text-white"
-                      : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                  }`}
-                >
-                  Dólares (USD)
-                </button>
+      return (
+        <section id="destacado" className="py-20 bg-gradient-to-b from-[#f3ece2] via-[#e7ddcf] to-[#d9cbb8] fade-in">
+          <div className="container mx-auto px-4 max-w-6xl grid md:grid-cols-2 gap-10">
+            <div className="flex flex-col items-center slide-left">
+              <h2 className="text-4xl font-playfair font-bold text-center mb-10 text-[#4e3a2e]">Productos Destacados</h2>
+              <div className="relative w-full max-w-md h-96 overflow-hidden rounded-lg shadow-lg border border-[#a38f62]">
+                <img src={images[currentIndex].src} alt={images[currentIndex].alt} className="w-full h-full object-cover transition-transform duration-500" />
+                <button onClick={prevImage} className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-[#6b4f3b] bg-opacity-80 text-white p-3 rounded-full shadow-md hover:bg-opacity-100 transition">&lt;</button>
+                <button onClick={nextImage} className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-[#6b4f3b] bg-opacity-80 text-white p-3 rounded-full shadow-md hover:bg-opacity-100 transition">&gt;</button>
               </div>
-
-              {currency === "ARS" && dolarBlue && (
-                <p className="text-center text-sm text-gray-600 mb-8 fade-in">
-                  Cotización Dólar Blue (venta): ARS{" "}
-                  {dolarBlue.toLocaleString("es-AR", {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
-                  })}{" "}
-                  (actualizado al día de hoy)
-                </p>
-              )}
-              {currency === "ARS" && !dolarBlue && (
-                <p className="text-center text-sm text-gray-600 mb-8 fade-in">
-                  Cargando cotización a Dolar...
-                </p>
-              )}
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {products.map((product) => (
-                  <div
-                    key={product.id}
-                    className="bg-white border border-stone-200 rounded-xl shadow-lg hover:shadow-xl transition-all p-6 flex flex-col zoom-in"
-                  >
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-48 object-cover rounded-lg mb-4"
-                    />
-                    <h3 className="text-2xl font-playfair font-bold text-amber-800 mb-2">
-                      {product.name}
-                    </h3>
-                    <p className="text-stone-700 font-montserrat text-sm mb-4 flex-grow">
-                      {product.description}
-                    </p>
-                    <p className="text-xl font-playfair font-bold text-stone-900 mb-4">
-                      {formatPrice(product.priceUSD)}
-                    </p>
-                    <button
-                      type="button"
-                      onClick={() => handleContactProduct(product.name)}
-                      className="bg-amber-800 hover:bg-amber-700 text-white px-4 py-2 rounded transition-colors font-montserrat text-sm"
-                    >
-                      Solicitar más info
-                    </button>
-                  </div>
-                ))}
+              <div className="mt-8 text-center">
+                <h3 className="text-2xl font-playfair font-bold text-[#4e3a2e] mb-2">{images[currentIndex].alt.split(' - ')[0]}</h3>
+                <p className="text-[#6b4f3b] font-montserrat leading-relaxed text-lg">{images[currentIndex].alt.split(' - ')[1]}</p>
               </div>
             </div>
-          </section>
-        );
-      };
 
-      const Process = ({ preselectedProduct, setPreselectedProduct }) => {
-        const [consultaText, setConsultaText] = useState("");
-
-        useEffect(() => {
-          if (preselectedProduct) {
-            setConsultaText(
-              `Me gustaría recibir más información sobre el producto: "${preselectedProduct}".`
-            );
-          } else {
-            setConsultaText("");
-          }
-        }, [preselectedProduct]);
-
-        const handleFormSubmit = () => {
-          setPreselectedProduct(null);
-        };
-
-        return (
-          <section id="proceso" className="py-20 bg-white fade-in">
-            <div className="container mx-auto px-4 max-w-6xl flex flex-col md:flex-row gap-12 items-start">
-              <div className="w-full md:w-1/2 slide-left">
-                <h2 className="text-4xl font-playfair font-bold mb-10">
-                  <a
-                    href="proceso.html"
-                    className="cursor-pointer hover:underline"
-                  >
-                    Nuestro Proceso
-                  </a>
-                </h2>
-                <p className="font-montserrat leading-relaxed mb-6">
-                  Te acompañamos desde la inspiración inicial hasta la
-                  instalación final, cuidando cada detalle para lograr un
-                  resultado único y personalizado. Nuestro proceso combina
-                  creatividad, tecnología y artesanía para transformar tus ideas
-                  en realidad.
-                </p>
-                <ol className="space-y-6">
-                  <li className="flex items-start gap-4">
-                    <span className="flex-shrink-0 w-10 h-10 rounded-full bg-amber-800 text-white flex items-center justify-center font-bold text-xl shadow">
-                      1
-                    </span>
-                    <div>
-                      <h3 className="font-playfair font-semibold text-lg mb-1 text-amber-800">
-                        Consulta & Inspiración
-                      </h3>
-                      <p className="font-montserrat text-stone-700">
-                        Escuchamos tus necesidades y preferencias, exploramos
-                        estilos y referencias, y definimos juntos la visión del
-                        proyecto.
-                      </p>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-4">
-                    <span className="flex-shrink-0 w-10 h-10 rounded-full bg-amber-800 text-white flex items-center justify-center font-bold text-xl shadow">
-                      2
-                    </span>
-                    <div>
-                      <h3 className="font-playfair font-semibold text-lg mb-1 text-amber-800">
-                        Diseño & Renderizado 3D
-                      </h3>
-                      <p className="font-montserrat text-stone-700">
-                        Creamos propuestas visuales en 3D para que puedas ver
-                        cómo quedará tu mueble en el espacio, ajustando cada
-                        detalle según tus comentarios.
-                      </p>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-4">
-                    <span className="flex-shrink-0 w-10 h-10 rounded-full bg-amber-800 text-white flex items-center justify-center font-bold text-xl shadow">
-                      3
-                    </span>
-                    <div>
-                      <h3 className="font-playfair font-semibold text-lg mb-1 text-amber-800">
-                        Selección de Materiales
-                      </h3>
-                      <p className="font-montserrat text-stone-700">
-                        Te asesoramos en la elección de maderas, acabados,
-                        tapizados y detalles, asegurando calidad y armonía con
-                        tu ambiente.
-                      </p>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-4">
-                    <span className="flex-shrink-0 w-10 h-10 rounded-full bg-amber-800 text-white flex items-center justify-center font-bold text-xl shadow">
-                      4
-                    </span>
-                    <div>
-                      <h3 className="font-playfair font-semibold text-lg mb-1 text-amber-800">
-                        Fabricación Profesional
-                      </h3>
-                      <p className="font-montserrat text-stone-700">
-                        Nuestros expertos producen cada pieza con dedicación y
-                        precisión, utilizando técnicas tradicionales y
-                        tecnología moderna.
-                      </p>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-4">
-                    <span className="flex-shrink-0 w-10 h-10 rounded-full bg-amber-800 text-white flex items-center justify-center font-bold text-xl shadow">
-                      5
-                    </span>
-                    <div>
-                      <h3 className="font-playfair font-semibold text-lg mb-1 text-amber-800">
-                        Entrega & Instalación
-                      </h3>
-                      <p className="font-montserrat text-stone-700">
-                        Coordinamos la entrega y realizamos la instalación
-                        profesional, asegurando que el resultado final supere
-                        tus expectativas.
-                      </p>
-                    </div>
-                  </li>
-                </ol>
+            <div className="flex flex-col items-center slide-right">
+              <h2 className="text-4xl font-playfair font-bold text-center mb-10 text-[#4e3a2e]">Novedades</h2>
+              <div className="relative w-full max-w-md h-96 overflow-hidden rounded-lg shadow-lg border border-[#a38f62]">
+                <img src={novedades[novedadIndex].image} alt={novedades[novedadIndex].title} className="w-full h-full object-cover transition-transform duration-500" />
+                <button onClick={prevNovedad} className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-[#6b4f3b] bg-opacity-80 text-white p-3 rounded-full shadow-md hover:bg-opacity-100 transition">&lt;</button>
+                <button onClick={nextNovedad} className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-[#6b4f3b] bg-opacity-80 text-white p-3 rounded-full shadow-md hover:bg-opacity-100 transition">&gt;</button>
               </div>
-
-              <div className="w-full md:w-1/2 slide-right">
-                <h2 className="text-4xl font-playfair font-bold mb-8">
-                  Dejanos tus datos y nos contactaremos a la brevedad.
-                </h2>
-                <form
-                  className="bg-white rounded-xl p-10 shadow-lg border border-stone-200 flex flex-col gap-6 zoom-in"
-                  id="contacto"
-                  action="https://formspree.io/f/xkgzlzld"
-                  method="POST"
-                  onSubmit={handleFormSubmit}
-                >
-                  <div className="flex flex-col md:flex-row gap-6">
-                    {/* Formspree hidden input */}
-                    <input type="hidden" name="_replyto" />
-                    <input
-                      type="hidden"
-                      name="form-name"
-                      value="Paradisse Design Contacto"
-                    />
-                  </div>
-                  <div className="flex-1">
-                    <label className="block text-amber-800 font-playfair font-semibold mb-2">
-                      Nombre
-                    </label>
-                    <input
-                      type="text"
-                      name="Nombre"
-                      placeholder="Nombre"
-                      className="border-b border-stone-300 p-3 w-full bg-amber-50/50 focus:ring-2 focus:ring-amber-600 focus:border-amber-600 rounded-lg outline-none transition"
-                      required
-                    />
-                  </div>
-                  <div className="flex-1">
-                    <label className="block text-amber-800 font-playfair font-semibold mb-2">
-                      Apellido
-                    </label>
-                    <input
-                      type="text"
-                      name="Apellido"
-                      placeholder="Apellido"
-                      className="border-b border-stone-300 p-3 w-full bg-amber-50/50 focus:ring-2 focus:ring-amber-600 focus:border-amber-600 rounded-lg outline-none transition"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-amber-800 font-playfair font-semibold mb-2">
-                      Teléfono
-                    </label>
-                    <input
-                      type="tel"
-                      name="Teléfono"
-                      placeholder="Teléfono"
-                      className="border-b border-stone-300 p-3 w-full bg-amber-50/50 focus:ring-2 focus:ring-amber-600 focus:border-amber-600 rounded-lg outline-none transition"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-amber-800 font-playfair font-semibold mb-2">
-                      Consulta
-                    </label>
-                    <textarea
-                      name="Consulta"
-                      placeholder="Escribe tu consulta..."
-                      rows="5"
-                      className="border-b border-stone-300 p-3 w-full bg-amber-50/50 focus:ring-2 focus:ring-amber-600 focus:border-amber-600 rounded-lg outline-none transition resize-none"
-                      value={consultaText}
-                      onChange={(e) => setConsultaText(e.target.value)}
-                      required
-                    ></textarea>
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full bg-amber-700 hover:bg-amber-800 text-white py-3 rounded-lg font-playfair font-semibold text-lg transition-all shadow-lg"
-                  >
-                    Enviar
-                  </button>
-                </form>
+              <div className="mt-8 text-center">
+                <h3 className="text-2xl font-playfair font-bold text-[#4e3a2e] mb-2">{novedades[novedadIndex].title}</h3>
+                <p className="text-[#6b4f3b] font-montserrat leading-relaxed text-lg">{novedades[novedadIndex].description}</p>
               </div>
             </div>
-          </section>
-        );
-      };
+          </div>
+        </section>
+      );
+    };
+    const Process = () => (
+      <section id="proceso" className="py-20 bg-white fade-in">
+        <div className="container mx-auto px-4 max-w-6xl flex flex-col md:flex-row gap-12 items-start">
+          <div className="w-full md:w-1/2 slide-left">
+            <h2 className="text-4xl font-playfair font-bold mb-10">Nuestro Proceso</h2>
+            <p className="font-montserrat leading-relaxed mb-6">
+              Te acompañamos desde la inspiración inicial hasta la instalación final, cuidando cada detalle para lograr un resultado único y personalizado. Nuestro proceso combina creatividad, tecnología y artesanía para transformar tus ideas en realidad.
+            </p>
+            <ol className="space-y-6">
+              <li className="flex items-start gap-4">
+          <span className="flex-shrink-0 w-10 h-10 rounded-full bg-amber-800 text-white flex items-center justify-center font-bold text-xl shadow">1</span>
+          <div>
+            <h3 className="font-playfair font-semibold text-lg mb-1 text-amber-800">Consulta & Inspiración</h3>
+            <p className="font-montserrat text-stone-700">
+              Escuchamos tus necesidades y preferencias, exploramos estilos y referencias, y definimos juntos la visión del proyecto.
+            </p>
+          </div>
+              </li>
+              <li className="flex items-start gap-4">
+          <span className="flex-shrink-0 w-10 h-10 rounded-full bg-amber-800 text-white flex items-center justify-center font-bold text-xl shadow">2</span>
+          <div>
+            <h3 className="font-playfair font-semibold text-lg mb-1 text-amber-800">Diseño & Renderizado 3D</h3>
+            <p className="font-montserrat text-stone-700">
+              Creamos propuestas visuales en 3D para que puedas ver cómo quedará tu mueble en el espacio, ajustando cada detalle según tus comentarios.
+            </p>
+          </div>
+              </li>
+              <li className="flex items-start gap-4">
+          <span className="flex-shrink-0 w-10 h-10 rounded-full bg-amber-800 text-white flex items-center justify-center font-bold text-xl shadow">3</span>
+          <div>
+            <h3 className="font-playfair font-semibold text-lg mb-1 text-amber-800">Selección de Materiales</h3>
+            <p className="font-montserrat text-stone-700">
+              Te asesoramos en la elección de maderas, acabados, tapizados y detalles, asegurando calidad y armonía con tu ambiente.
+            </p>
+          </div>
+              </li>
+              <li className="flex items-start gap-4">
+          <span className="flex-shrink-0 w-10 h-10 rounded-full bg-amber-800 text-white flex items-center justify-center font-bold text-xl shadow">4</span>
+          <div>
+            <h3 className="font-playfair font-semibold text-lg mb-1 text-amber-800">Fabricación Artesanal</h3>
+            <p className="font-montserrat text-stone-700">
+              Nuestros expertos artesanos producen cada pieza con dedicación y precisión, utilizando técnicas tradicionales y tecnología moderna.
+            </p>
+          </div>
+              </li>
+              <li className="flex items-start gap-4">
+          <span className="flex-shrink-0 w-10 h-10 rounded-full bg-amber-800 text-white flex items-center justify-center font-bold text-xl shadow">5</span>
+          <div>
+            <h3 className="font-playfair font-semibold text-lg mb-1 text-amber-800">Entrega & Instalación</h3>
+            <p className="font-montserrat text-stone-700">
+              Coordinamos la entrega y realizamos la instalación profesional, asegurando que el resultado final supere tus expectativas.
+            </p>
+          </div>
+              </li>
+            </ol>
+          </div>
+          
+          <div className="w-full md:w-1/2 slide-right">
+            <h2 className="text-4xl font-playfair font-bold mb-8">Contáctanos</h2>
+            <form
+              className="bg-white rounded-xl p-10 shadow-lg border border-stone-200 flex flex-col gap-6 zoom-in"
+              id="contacto"
+              action="https://formspree.io/f/xkgzlzld"
+              method="POST"
+            >
+              <div className="flex flex-col md:flex-row gap-6">
+          {/* Formspree hidden input */}
+          <input type="hidden" name="_replyto" />
+          <input type="hidden" name="form-name" value="Paradisse Design Contacto" />
+              </div>
+              <div className="flex-1">
+          <label className="block text-amber-800 font-playfair font-semibold mb-2">Nombre</label>
+          <input type="text" name="Nombre" placeholder="Nombre" className="border-b border-stone-300 p-3 w-full bg-amber-50/50 focus:ring-2 focus:ring-amber-600 focus:border-amber-600 rounded-lg outline-none transition"/>
+              </div>
+              <div className="flex-1">
+          <label className="block text-amber-800 font-playfair font-semibold mb-2">Apellido</label>
+          <input type="text" name="Apellido" placeholder="Apellido" className="border-b border-stone-300 p-3 w-full bg-amber-50/50 focus:ring-2 focus:ring-amber-600 focus:border-amber-600 rounded-lg outline-none transition"/>
+              </div>
+              <div>
+          <label className="block text-amber-800 font-playfair font-semibold mb-2">Teléfono</label>
+          <input type="tel" name="Teléfono" placeholder="Teléfono" className="border-b border-stone-300 p-3 w-full bg-amber-50/50 focus:ring-2 focus:ring-amber-600 focus:border-amber-600 rounded-lg outline-none transition"/>
+              </div>
+              <div>
+          <label className="block text-amber-800 font-playfair font-semibold mb-2">Email</label>
+          <input type="email" name="Email" placeholder="Email" className="border-b border-stone-300 p-3 w-full bg-amber-50/50 focus:ring-2 focus:ring-amber-600 focus:border-amber-600 rounded-lg outline-none transition"/>
+              </div>
+              <div>
+          <label className="block text-amber-800 font-playfair font-semibold mb-2">Consulta</label>
+          <textarea name="Consulta" placeholder="Escribe tu consulta..." rows="5" className="border-b border-stone-300 p-3 w-full bg-amber-50/50 focus:ring-2 focus:ring-amber-600 focus:border-amber-600 rounded-lg outline-none transition resize-none"></textarea>
+              </div>
+              <button type="submit" className="w-full bg-amber-700 hover:bg-amber-800 text-white py-3 rounded-lg font-playfair font-semibold text-lg transition-all shadow-lg">
+          Enviar
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    );
 
       const Footer = () => (
         <footer className="bg-gradient-to-b from-[#e7ddcf] to-[#f3ece2] border-t border-black/10 fade-in">
@@ -1063,4 +682,3 @@
     </script>
   </body>
 </html>
-+
