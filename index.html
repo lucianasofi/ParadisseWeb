@@ -328,24 +328,24 @@
       
 
       const Hero = () => (
-        <section className="hero-pattern h-screen pt-32 flex items-center fade-in">
+        <section className="hero-pattern h-screen pt-32 flex items-center fade-in" style={{ backgroundImage: 'url("images/inicio.jpg")' }}>
           <div className="container mx-auto px-4">
-            <div className="max-w-2xl backdrop-blur-sm bg-white bg-opacity-80 p-8 rounded zoom-in">
-              <h1 className="text-4xl md:text-5xl font-playfair font-bold text-gray-800 mb-4 slide-left">
-                Muebles Exclusivos para tu hogar
-              </h1>
-              <p className="text-lg md:text-xl text-gray-700 font-montserrat mb-6 slide-right">
-                Diseños premium de interior para todo tipo de espacios.
-              </p>
-              <a
-                href="https://wa.me/5491172299130?text=Hola!%20Me%20gustaría%20solicitar%20una%20consulta%20sobre%20muebles%20a%20medida."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-amber-800 hover:bg-amber-700 text-white px-6 py-3 rounded transition-colors font-montserrat fade-in"
-              >
-                Solicitar consulta
-              </a>
-            </div>
+        <div className="max-w-2xl backdrop-blur-sm bg-white bg-opacity-80 p-8 rounded zoom-in">
+          <h1 className="text-4xl md:text-5xl font-playfair font-bold text-gray-800 mb-4 slide-left">
+            Muebles Exclusivos para tu hogar
+          </h1>
+          <p className="text-lg md:text-xl text-gray-700 font-montserrat mb-6 slide-right">
+            Diseños premium de interior para todo tipo de espacios.
+          </p>
+          <a
+            href="https://wa.me/5491172299130?text=Hola!%20Me%20gustaría%20solicitar%20una%20consulta%20sobre%20muebles%20a%20medida."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-amber-800 hover:bg-amber-700 text-white px-6 py-3 rounded transition-colors font-montserrat fade-in"
+          >
+            Solicitar consulta
+          </a>
+        </div>
           </div>
         </section>
       );
@@ -403,36 +403,41 @@
       const DestacadoProduct = () => {
         const images = [
           {
-            src: "images/mesa_centro.jpg",
-            alt: "Mesa de Centro - Moderna y elegante",
-            name: "Mesa de Centro",
+            src: "images/destacado1.jpg",
+            alt: "Rack TV Simba - Diseño elegante y funcional",
+            name: "Rack Simba",
           },
           {
-            src: "images/sillon_chester.jpg",
-            alt: "Sillón Chester - Clásico y sofisticado",
-            name: "Sillón Chester",
+            src: "images/destacado2.jpg",
+            alt: "Rack Tv Lissa - Diseño contemporáneo y funcional",
+            name: "RackTvLissa",
           },
           {
-            src: "images/estanteria.jpg",
-            alt: "Estantería Modular - Industrial y versátil",
-            name: "Estantería Modular",
+            src: "images/destacado3.jpg",
+            alt: "Rack TV Katze - Diseño moderno y estético",
+            name: "RackTVKatze",
           },
         ];
 
         const novedades = [
           {
             image: "images/novedad1.jpg",
-            title: "Nuevo lanzamiento: Mesa de comedor extensible",
+            title: "Rack TV + Coffe Shop + Escritorio ",
             description:
-              "Ideal para espacios pequeños, se adapta a tus necesidades.",
+              "Con revestimiento viena e iluminación cálida",
           },
           {
             image: "images/novedad2.jpg",
-            title: "Sillón relax con tapizado premium",
-            description: "Comodidad y diseño para tu living.",
+            title: "Respaldo de Cama Ibiza",
+            description: "Respaldo tapizado y revestimiento combinado.",
           },
-        ];
-
+        
+        {
+          image: "images/novedad3.jpg",
+          title: "Rack TV Moe",
+          description: "Con torre con luces led y placa tv calacata.",
+        }
+];
         const [currentIndex, setCurrentIndex] = useState(0);
         const [novedadIndex, setNovedadIndex] = useState(0);
 

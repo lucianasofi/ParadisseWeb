@@ -358,7 +358,8 @@
       const Gallery = () => {
         const [filter, setFilter] = useState("all"); // 'all', 'real', 'renders'
 
-        const images = [
+        // Mezclar imágenes desordenadamente
+        const imagesRaw = [
           // Proyectos Reales
           {
             src: "images/galeria/real_cocina_1.jpg",
@@ -465,102 +466,116 @@
 
           // Renders 3D
           {
-            src: "images/galeria/render_living_1.jpg",
+            src: "images/galeria/render_tv_i1.jpg",
             alt: "Render de living con sofá modular y mesa de centro",
             type: "render",
             description: "Propuesta de living con mobiliario personalizado y detalles decorativos.",
           },
           {
-            src: "images/galeria/render_oficina_1.jpg",
+            src: "images/galeria/render_oficina1.jpg",
             alt: "Render de oficina en casa con escritorio y estantería",
             type: "render",
             description: "Visualización de espacio de trabajo funcional y estético.",
           },
           {
-            src: "images/galeria/render_biblioteca_1.jpg",
+            src: "images/galeria/render_biblioteca.jpg",
             alt: "Render de biblioteca empotrada con escalera",
             type: "render",
             description: "Diseño de biblioteca a medida, optimizando el espacio y la funcionalidad.",
           },
           {
-            src: "images/galeria/render_vestidor_1.jpg",
+            src: "images/galeria/render_vestidor1.jpg",
             alt: "Render de vestidor con iluminación LED",
             type: "render",
             description: "Propuesta de vestidor organizado con módulos a medida y detalles de lujo.",
           },
           {
-            src: "images/galeria/render_terraza_1.jpg",
-            alt: "Render de mobiliario para terraza",
+            src: "images/galeria/render_tv_i2.jpg",
+            alt: "Render de living Tv",
             type: "render",
-            description: "Diseño de muebles de exterior para crear un ambiente relajante en la terraza.",
+            description: "Diseño de mueble para TV moderno y estético.",
           },
           {
-            src: "images/galeria/render_cocina_moderna_1.jpg",
-            alt: "Render de cocina minimalista con isla",
+            src: "images/galeria/render_oficina2.jpg",
+            alt: "Render de oficina minimalista",
             type: "render",
-            description: "Propuesta de cocina contemporánea con líneas limpias y materiales premium.",
+            description: "Propuesta de oficina elegante con materiales premium.",
           },
           {
-            src: "images/galeria/render_dormitorio_juvenil_1.jpg",
+            src: "images/galeria/render_dormitorio1.jpg",
             alt: "Render de dormitorio juvenil con escritorio integrado",
             type: "render",
             description: "Diseño funcional para adolescentes con zona de estudio y descanso.",
           },
           {
-            src: "images/galeria/render_comedor_formal_1.jpg",
-            alt: "Render de comedor formal con aparador",
+            src: "images/galeria/render_living_comedor1.jpg",
+            alt: "Render de comedor y living formal con aparador",
             type: "render",
-            description: "Visualización de comedor elegante con mesa extensible y aparador a medida.",
+            description: "Visualización de living-comedor elegante.",
           },
           {
-            src: "images/galeria/render_bano_spa_1.jpg",
-            alt: "Render de baño tipo spa con bañera exenta",
+            src: "images/galeria/render_dormitorio2.jpg",
+            alt: "Render de dormitorio principal lujoso",
             type: "render",
-            description: "Propuesta de baño de lujo con elementos de relajación y bienestar.",
+            description: "Propuesta de dormitorio de lujo.",
           },
           {
-            src: "images/galeria/render_sala_juegos_1.jpg",
-            alt: "Render de sala de juegos con mesa de pool",
+            src: "images/galeria/render_living_amplio.jpg",
+            alt: "Render de living amplio varillado",
             type: "render",
-            description: "Diseño de espacio recreativo con mobiliario especializado y bar integrado.",
+            description: "Living con revestimiento varillado para estufa, en paraiso poro abierto laqueado negro.",
           },
           {
-            src: "images/galeria/render_home_theater_1.jpg",
-            alt: "Render de home theater con butacas reclinables",
+            src: "images/galeria/render_monoambiente.jpg",
+            alt: "Render de monoambiente moderno",
             type: "render",
-            description: "Sala de cine en casa con acústica optimizada y mobiliario especializado.",
+            description: "Departamento con espacio optimizado y mobiliario especializado.",
           },
           {
-            src: "images/galeria/render_cocina_industrial_1.jpg",
-            alt: "Render de cocina estilo industrial",
+            src: "images/galeria/render_rackTV_i2.jpg",
+            alt: "Render de rack de TV moderno con torres flotantes",
             type: "render",
-            description: "Propuesta de cocina con estética industrial y funcionalidad profesional.",
+            description: "Propuesta de rack de TV con diseño moderno y funcional.",
           },
           {
-            src: "images/galeria/render_oficina_ejecutiva_1.jpg",
-            alt: "Render de oficina ejecutiva con sala de reuniones",
+            src: "images/galeria/render_rackTV_i3.jpg",
+            alt: "Render de Rack Tv amplio y funcional",
             type: "render",
             description: "Diseño corporativo con mobiliario de alta gama y tecnología integrada.",
           },
           {
-            src: "images/galeria/render_nursery_1.jpg",
-            alt: "Render de habitación de bebé con cuna convertible",
+            src: "images/galeria/render_rackTV_i4.jpg",
+            alt: "Render de living completo",
             type: "render",
-            description: "Diseño tierno y funcional para los primeros años con muebles adaptables.",
+            description: "Rack de TV amplio, lujoso y elegante.",
           },
           {
-            src: "images/galeria/render_walk_in_closet_1.jpg",
-            alt: "Render de walk-in closet de lujo",
+            src: "images/galeria/render_dormitorio3.jpg",
+            alt: "Render de habitacion elegante premium",
             type: "render",
-            description: "Vestidor de alta gama con sistemas de organización y acabados premium.",
+            description: "Habitacion principal amplia y  con acabados en la parte superior.",
           },
           {
-            src: "images/galeria/render_cocina_campo_1.jpg",
-            alt: "Render de cocina estilo campo con desayunador",
+            src: "images/galeria/render_living_completo.jpg",
+            alt: "Render de living completo",
             type: "render",
-            description: "Propuesta rústica-elegante perfecta para casas de fin de semana.",
+            description: "Propuesta de living y recibidor completo con muebles a medida y detalles de diseño.",
           },
         ];
+
+        // Algoritmo de mezcla Fisher-Yates
+        function shuffle(array) {
+          let m = array.length, t, i;
+          while (m) {
+            i = Math.floor(Math.random() * m--);
+            t = array[m];
+            array[m] = array[i];
+            array[i] = t;
+          }
+          return array;
+        }
+
+        const images = shuffle([...imagesRaw]);
 
         const filteredImages = images.filter(image => filter === 'all' || image.type === filter);
 
@@ -571,7 +586,7 @@
                 Nuestra Galería de Proyectos
               </h2>
               <p className="text-center text-lg text-stone-700 font-montserrat mb-12 slide-right">
-                Explora nuestros trabajos, desde proyectos reales finalizados hasta visualizaciones 3D que dan vida a tus ideas.
+                Explora nuestros trabajos, desde proyectos finalizados hasta visualizaciones 3D que dan vida a tus ideas.
               </p>
 
               {/* Modificación aquí para los botones de filtro */}
@@ -594,7 +609,7 @@
                       : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                   }`}
                 >
-                  Proyectos Reales ({images.filter(img => img.type === 'real').length})
+                  Proyectos Finalizados ({images.filter(img => img.type === 'real').length})
                 </button>
                 <button
                   onClick={() => setFilter("render")}
@@ -604,7 +619,7 @@
                       : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                   }`}
                 >
-                  Renders 3D ({images.filter(img => img.type === 'render').length})
+                  Renders Diseños ({images.filter(img => img.type === 'render').length})
                 </button>
               </div>
 
@@ -616,7 +631,7 @@
                       <h3>{image.alt.split(" con ")[0]}</h3>
                       <p>{image.description}</p>
                       <span className="mt-2 text-sm font-bold uppercase">
-                        {image.type === 'real' ? 'Proyecto Real' : 'Render 3D'}
+                        {image.type === 'real' ? 'Proyecto Finalizado' : 'Render Diseño'}
                       </span>
                     </div>
                   </div>
