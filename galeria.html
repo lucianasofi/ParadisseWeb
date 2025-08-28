@@ -157,10 +157,11 @@
         overflow: hidden;
         border-radius: 0.75rem;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
       }
       .gallery-item img {
         width: 100%;
-        height: 250px; /* Altura fija para las imágenes */
+        height: 250px;
         object-fit: cover;
         transition: transform 0.3s ease-in-out;
       }
@@ -212,10 +213,6 @@
           setIsMobileMenuOpen(!isMobileMenuOpen);
         };
 
-        const closeMobileMenu = () => {
-          setIsMobileMenuOpen(false);
-        };
-
         return (
           <header className="fixed w-full bg-white bg-opacity-90 z-50 shadow-sm fade-in">
             <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -229,7 +226,7 @@
                   PARADISSE DESIGN
                 </h1>
               </a>
-              {/* Botón de hamburguesa para móvil */}
+
               <div className="md:hidden">
                 <button
                   onClick={toggleMobileMenu}
@@ -251,6 +248,7 @@
                   </svg>
                 </button>
               </div>
+
               <nav className="hidden md:block">
                 <ul className="flex space-x-8">
                   <li>
@@ -278,7 +276,8 @@
                     </a>
                   </li>
                   <li>
-                    <a href="index.html#proceso"
+                    <a
+                      href="index.html#proceso"
                       className="text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
                     >
                       Proceso
@@ -294,8 +293,7 @@
                   </li>
                 </ul>
               </nav>
-              
-              {/* Menú móvil */}
+
               {isMobileMenuOpen && (
                 <div className="absolute top-full left-0 w-full bg-white shadow-lg md:hidden">
                   <nav className="px-4 py-4">
@@ -329,7 +327,7 @@
                       </li>
                       <li>
                         <a
-                          href="proceso.html"
+                          href="index.html#proceso"
                           className="block text-gray-700 hover:text-amber-800 transition-colors font-montserrat"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
@@ -353,141 +351,118 @@
           </header>
         );
       };
-      
 
       const Gallery = () => {
         const [filter, setFilter] = useState("all"); // 'all', 'real', 'renders'
 
-        // Mezclar imágenes desordenadamente
         const imagesRaw = [
-          // Proyectos Reales
           {
-            src: "images/galeria/real_cocina_1.jpg",
+            src: "images/galeria/cocina_real1.jpg",
+            alt: "Cocina adaptada a espacio reducido",
+            type: "real",
+            description:
+              "Diseño y fabricación de cocina a medida con acabados en madera y mármol.",
+          },
+          {
+            src: "images/galeria/real_rackTV1.jpg",
+            alt: "Rack de TV moderno",
+            type: "real",
+            description:
+              "Diseño de rack de TV con iluminación LED y acabados en madera.",
+          },
+          {
+            src: "images/galeria/cocina_real3.jpg",
             alt: "Cocina moderna con isla central",
             type: "real",
-            description: "Diseño y fabricación de cocina a medida con acabados en madera y mármol.",
+            description:
+              "Cocina amplia con isla central y acabados en grafito.",
           },
           {
-            src: "images/galeria/real_dormitorio_1.jpg",
-            alt: "Dormitorio principal con cabecero tapizado",
-            type: "real",
-            description: "Mobiliario de dormitorio a medida, incluyendo cabecero y mesas de luz.",
-          },
-          {
-            src: "images/galeria/real_comedor_1.jpg",
-            alt: "Comedor con mesa de madera maciza y sillas de diseño",
-            type: "real",
-            description: "Mesa de comedor artesanal y sillas ergonómicas para un ambiente acogedor.",
-          },
-          {
-            src: "images/galeria/real_bano_1.jpg",
+            src: "images/galeria/real_bano1.jpg",
             alt: "Mueble de baño flotante con doble bacha",
             type: "real",
-            description: "Vanitory a medida con almacenamiento integrado y diseño minimalista.",
+            description:
+              "Vanitory con frente laqueado a medida con almacenamiento integrado y diseño minimalista.",
           },
           {
-            src: "images/galeria/real_recepcion_1.jpg",
-            alt: "Mesa de recepción para oficina",
+            src: "images/galeria/real_recibidor1.jpg",
+            alt: "Mueble recibidor",
             type: "real",
-            description: "Mesa de recepción con diseño moderno y funcional para espacios corporativos.",
+            description: "Recibidor con diseño moderno y funcional.",
           },
           {
-            src: "images/galeria/real_cocina_2.jpg",
-            alt: "Cocina integral con despensa oculta",
+            src: "images/galeria/cocina_real4.jpg",
+            alt: "Cocina integral con desayunador",
             type: "real",
-            description: "Cocina completa con soluciones de almacenamiento inteligente y acabados premium.",
+            description: "Cocina completa con desayunador y acabados premium.",
           },
           {
-            src: "images/galeria/real_living_1.jpg",
-            alt: "Living con sofá modular y mesa de centro",
+            src: "images/galeria/real_rackTV2.jpg",
+            alt: "Rack de TV",
             type: "real",
-            description: "Diseño de living contemporáneo con muebles a medida y acabados en madera."
+            description:
+              "Diseño de rack de TV contemporáneo con muebles flotantes.",
           },
           {
-            src: "images/galeria/real_living_1.jpg",
-            alt: "Living con mueble de TV y biblioteca integrada",
+            src: "images/galeria/real_vestidor2.jpg",
+            alt: "Placard empotrado",
             type: "real",
-            description: "Centro de entretenimiento a medida con biblioteca y almacenamiento oculto.",
+            description:
+              "Mueble Placard empotrado con diseño moderno y en madera.",
           },
           {
-            src: "images/galeria/real_escritorio_1.jpg",
-            alt: "Escritorio ejecutivo con cajonera lateral",
+            src: "images/galeria/real_rackTV3.jpg",
+            alt: "Rack TV especial",
             type: "real",
-            description: "Mobiliario de oficina personalizado con detalles en cuero y madera noble.",
+            description:
+              "Diseño de rack TV especial en marmol con espacio de estufa empotrada.",
           },
           {
-            src: "images/galeria/real_placard_1.jpg",
-            alt: "Placard empotrado con puertas corredizas",
+            src: "images/galeria/cocina_real5.jpg",
+            alt: "Cocina estética y moderna",
             type: "real",
-            description: "Sistema de guardado optimizado con divisiones internas personalizadas.",
+            description: "Diseño de cocina con isla-desayunador central.",
           },
           {
-            src: "images/galeria/real_bar_1.jpg",
-            alt: "Barra de bar con taburetes altos",
+            src: "images/galeria/real_rackTV4.jpg",
+            alt: "Rack de TV moderno",
             type: "real",
-            description: "Espacio de bar doméstico con iluminación LED y acabados sofisticados.",
+            description: "Diseño de rack de TV con torre y muebles flotantes.",
           },
           {
-            src: "images/galeria/real_estanteria_1.jpg",
+            src: "images/galeria/real_estanteria1.jpg",
             alt: "Estantería modular para living",
             type: "real",
-            description: "Sistema modular de estanterías con combinación de espacios abiertos y cerrados.",
+            description:
+              "Sistema modular de estanterías con combinación de espacios abiertos y cerrados.",
           },
-          {
-            src: "images/galeria/real_mesa_centro_1.jpg",
-            alt: "Mesa de centro con cajones ocultos",
-            type: "real",
-            description: "Mesa de centro funcional con almacenamiento secreto y tapa deslizable.",
-          },
-          {
-            src: "images/galeria/real_cabecero_1.jpg",
-            alt: "Cabecero tapizado con mesas de luz flotantes",
-            type: "real",
-            description: "Conjunto de dormitorio con cabecero acolchado y mesas suspendidas.",
-          },
-          {
-            src: "images/galeria/real_cocina_rustica_1.jpg",
-            alt: "Cocina rústica con isla de madera maciza",
-            type: "real",
-            description: "Diseño rústico-moderno con madera recuperada y herrajes artesanales.",
-          },
-          {
-            src: "images/galeria/real_biblioteca_1.jpg",
-            alt: "Biblioteca de piso a techo con escalera",
-            type: "real",
-            description: "Biblioteca clásica con escalera deslizable y molduras decorativas.",
-          },
-          {
-            src: "images/galeria/real_vestidor_1.jpg",
-            alt: "Vestidor en L con isla central",
-            type: "real",
-            description: "Vestidor de lujo con isla central, espejos y iluminación perimetral.",
-          },
-
-          // Renders 3D
           {
             src: "images/galeria/render_tv_i1.jpg",
             alt: "Render de living con sofá modular y mesa de centro",
             type: "render",
-            description: "Propuesta de living con mobiliario personalizado y detalles decorativos.",
+            description:
+              "Propuesta de living con mobiliario personalizado y detalles decorativos.",
           },
           {
             src: "images/galeria/render_oficina1.jpg",
             alt: "Render de oficina en casa con escritorio y estantería",
             type: "render",
-            description: "Visualización de espacio de trabajo funcional y estético.",
+            description:
+              "Visualización de espacio de trabajo funcional y estético.",
           },
           {
             src: "images/galeria/render_biblioteca.jpg",
             alt: "Render de biblioteca empotrada con escalera",
             type: "render",
-            description: "Diseño de biblioteca a medida, optimizando el espacio y la funcionalidad.",
+            description:
+              "Diseño de biblioteca a medida, optimizando el espacio y la funcionalidad.",
           },
           {
             src: "images/galeria/render_vestidor1.jpg",
             alt: "Render de vestidor con iluminación LED",
             type: "render",
-            description: "Propuesta de vestidor organizado con módulos a medida y detalles de lujo.",
+            description:
+              "Propuesta de vestidor organizado con módulos a medida y detalles de lujo.",
           },
           {
             src: "images/galeria/render_tv_i2.jpg",
@@ -499,13 +474,15 @@
             src: "images/galeria/render_oficina2.jpg",
             alt: "Render de oficina minimalista",
             type: "render",
-            description: "Propuesta de oficina elegante con materiales premium.",
+            description:
+              "Propuesta de oficina elegante con materiales premium.",
           },
           {
             src: "images/galeria/render_dormitorio1.jpg",
             alt: "Render de dormitorio juvenil con escritorio integrado",
             type: "render",
-            description: "Diseño funcional para adolescentes con zona de estudio y descanso.",
+            description:
+              "Diseño funcional para adolescentes con zona de estudio y descanso.",
           },
           {
             src: "images/galeria/render_living_comedor1.jpg",
@@ -523,25 +500,29 @@
             src: "images/galeria/render_living_amplio.jpg",
             alt: "Render de living amplio varillado",
             type: "render",
-            description: "Living con revestimiento varillado para estufa, en paraiso poro abierto laqueado negro.",
+            description:
+              "Living con revestimiento varillado para estufa, en paraíso poro abierto laqueado negro.",
           },
           {
             src: "images/galeria/render_monoambiente.jpg",
             alt: "Render de monoambiente moderno",
             type: "render",
-            description: "Departamento con espacio optimizado y mobiliario especializado.",
+            description:
+              "Departamento con espacio optimizado y mobiliario especializado.",
           },
           {
             src: "images/galeria/render_rackTV_i2.jpg",
             alt: "Render de rack de TV moderno con torres flotantes",
             type: "render",
-            description: "Propuesta de rack de TV con diseño moderno y funcional.",
+            description:
+              "Propuesta de rack de TV con diseño moderno y funcional.",
           },
           {
             src: "images/galeria/render_rackTV_i3.jpg",
             alt: "Render de Rack Tv amplio y funcional",
             type: "render",
-            description: "Diseño corporativo con mobiliario de alta gama y tecnología integrada.",
+            description:
+              "Diseño corporativo con mobiliario de alta gama y tecnología integrada.",
           },
           {
             src: "images/galeria/render_rackTV_i4.jpg",
@@ -553,19 +534,23 @@
             src: "images/galeria/render_dormitorio3.jpg",
             alt: "Render de habitacion elegante premium",
             type: "render",
-            description: "Habitacion principal amplia y  con acabados en la parte superior.",
+            description:
+              "Habitacion principal amplia y con acabados en la parte superior.",
           },
           {
             src: "images/galeria/render_living_completo.jpg",
             alt: "Render de living completo",
             type: "render",
-            description: "Propuesta de living y recibidor completo con muebles a medida y detalles de diseño.",
+            description:
+              "Propuesta de living y recibidor completo con muebles a medida y detalles de diseño.",
           },
         ];
 
         // Algoritmo de mezcla Fisher-Yates
         function shuffle(array) {
-          let m = array.length, t, i;
+          let m = array.length,
+            t,
+            i;
           while (m) {
             i = Math.floor(Math.random() * m--);
             t = array[m];
@@ -575,9 +560,24 @@
           return array;
         }
 
-        const images = shuffle([...imagesRaw]);
+        const images = shuffle([...imagesRaw]); // Shuffle a copy of the array
 
-        const filteredImages = images.filter(image => filter === 'all' || image.type === filter);
+        const filteredImages = images.filter(
+          (image) => filter === "all" || image.type === filter
+        );
+
+        const openImageInNewWindow = (imageSrc) => {
+          const newWindow = window.open(
+            "",
+            "_blank",
+            "width=900,height=700,scrollbars=yes,resizable=yes"
+          );
+          if (newWindow) {
+            newWindow.document.write(`
+            `);
+            newWindow.document.close();
+          }
+        };
 
         return (
           <section id="galeria" className="py-20 pt-32 bg-white fade-in">
@@ -586,7 +586,8 @@
                 Nuestra Galería de Proyectos
               </h2>
               <p className="text-center text-lg text-stone-700 font-montserrat mb-12 slide-right">
-                Explora nuestros trabajos, desde proyectos finalizados hasta visualizaciones 3D que dan vida a tus ideas.
+                Explora nuestros trabajos, desde proyectos finalizados hasta
+                visualizaciones 3D que dan vida a tus ideas.
               </p>
 
               {/* Modificación aquí para los botones de filtro */}
@@ -609,7 +610,8 @@
                       : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                   }`}
                 >
-                  Proyectos Finalizados ({images.filter(img => img.type === 'real').length})
+                  Proyectos Finalizados (
+                  {images.filter((img) => img.type === "real").length})
                 </button>
                 <button
                   onClick={() => setFilter("render")}
@@ -619,19 +621,26 @@
                       : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                   }`}
                 >
-                  Renders Diseños ({images.filter(img => img.type === 'render').length})
+                  Renders Diseños (
+                  {images.filter((img) => img.type === "render").length})
                 </button>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredImages.map((image, index) => (
-                  <div key={index} className="gallery-item zoom-in">
+                  <div
+                    key={index}
+                    className="gallery-item zoom-in"
+                    onClick={() => openImageInNewWindow(image.src)}
+                  >
                     <img src={image.src} alt={image.alt} />
                     <div className="gallery-overlay">
                       <h3>{image.alt.split(" con ")[0]}</h3>
                       <p>{image.description}</p>
                       <span className="mt-2 text-sm font-bold uppercase">
-                        {image.type === 'real' ? 'Proyecto Finalizado' : 'Render Diseño'}
+                        {image.type === "real"
+                          ? "Proyecto Finalizado"
+                          : "Render Diseño"}
                       </span>
                     </div>
                   </div>
@@ -644,15 +653,16 @@
                     ¿Te inspiraste con algún proyecto?
                   </h3>
                   <p className="text-lg text-stone-700 font-montserrat mb-6">
-                    Cada mueble cuenta una historia única. Permítenos crear la tuya con diseños personalizados o ya diseñados que reflejen tu estilo y necesidades.
+                    Cada mueble cuenta una historia única. Permítenos crear la
+                    tuya con diseños personalizados o ya diseñados que reflejen
+                    tu estilo y necesidades.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    
                     <a
                       href="disena.html"
                       className="inline-block bg-stone-600 hover:bg-stone-700 text-white px-8 py-4 rounded-lg transition-colors font-montserrat font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
                     >
-                    Diseña con Nosotros
+                      Diseña con Nosotros
                     </a>
                     <a
                       href="https://wa.me/5491130890681?text=Hola!%20Me%20gustaría%20solicitar%20una%20consulta%20para%20un%20proyecto%20de%20muebles%20a%20medida."
@@ -660,19 +670,22 @@
                       rel="noopener noreferrer"
                       className="inline-block bg-amber-800 hover:bg-amber-700 text-white px-8 py-4 rounded-lg transition-colors font-montserrat font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
                     >
-                    Consulta por WhatsApp
+                      Consulta por WhatsApp
                     </a>
-                    <a href="disena.html">
-                      <span className="inline-block bg-stone-600 hover:bg-stone-700 text-white px-8 py-4 rounded-lg transition-colors font-montserrat font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-                        Explora más diseños 3D
-                      </span>
+                    <a
+                      href="disena.html"
+                      className="inline-block bg-stone-600 hover:bg-stone-700 text-white px-8 py-4 rounded-lg transition-colors font-montserrat font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                    >
+                      Explora más diseños 3D
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="text-center">
                   <p className="text-stone-600 font-montserrat">
-                    <strong>Más de 300 proyectos realizados</strong> • Diseño personalizado • Fabricación profesional • Materiales de alta calidad • Atención al detalle • Satisfacción garantizada
+                    <strong>Más de 300 proyectos realizados</strong> ◦ Diseño
+                    personalizado ◦ Fabricación profesional ◦ Materiales de alta
+                    calidad ◦ Atención al detalle ◦ Satisfacción garantizada
                   </p>
                 </div>
               </div>
@@ -715,6 +728,36 @@
       );
 
       const App = () => {
+        useEffect(() => {
+          // IntersectionObserver para animaciones
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("visible");
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.15 }
+          );
+
+          // Observar elementos con animaciones
+          const animatedElements = document.querySelectorAll(
+            ".fade-in, .slide-left, .slide-right, .zoom-in"
+          );
+          animatedElements.forEach((el) => {
+            observer.observe(el);
+          });
+
+          // Cleanup
+          return () => {
+            animatedElements.forEach((el) => {
+              observer.unobserve(el);
+            });
+          };
+        }, []);
+
         return (
           <div className="font-montserrat">
             <Header />
@@ -724,26 +767,9 @@
         );
       };
 
-      ReactDOM.render(<App />, document.getElementById("root"));
-
-      // IntersectionObserver para animaciones
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.15 }
-      );
-
-      document
-        .querySelectorAll(".fade-in, .slide-left, .slide-right, .zoom-in")
-        .forEach((el) => {
-          observer.observe(el);
-        });
+      // Renderizar la aplicación
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<App />);
     </script>
   </body>
 </html>

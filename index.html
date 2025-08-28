@@ -436,7 +436,12 @@
           image: "images/novedad3.jpg",
           title: "Rack TV Moe",
           description: "Con torre con luces led y placa tv calacata.",
-        }
+        },
+        {
+          image: "images/novedad4.jpg",
+          title: "Cocina Dasha",
+          description: "Cocina moderna con isla central de madera y mármol liso brillante.",
+        },
 ];
         const [currentIndex, setCurrentIndex] = useState(0);
         const [novedadIndex, setNovedadIndex] = useState(0);
@@ -526,55 +531,55 @@
                 </div>
               </div>
 
-              {/* Novedades */}
-              <div className="flex flex-col items-center slide-right">
+                {/* Novedades */}
+                <div className="flex flex-col items-center slide-right">
                 <a href="galeria.html" className="block cursor-pointer hover:underline">
                   <h2 className="text-4xl font-playfair font-bold text-center mb-10 text-[#4e3a2e]">
-                    Novedades
+                  Novedades
                   </h2>
                 </a>
                 <div className="relative w-full max-w-md h-96 overflow-hidden rounded-lg shadow-lg border border-[#a38f62]">
                   <img
-                    src={novedades[novedadIndex].image}
-                    alt={novedades[novedadIndex].title}
-                    className="w-full h-full object-cover transition-transform duration-500"
+                  src={novedades[novedadIndex].image}
+                  alt={novedades[novedadIndex].title}
+                  className="w-full h-full object-cover transition-transform duration-500"
                   />
                   <button
-                    type="button"
-                    onClick={prevNovedad}
-                    className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-[#6b4f3b] bg-opacity-80 text-white p-3 rounded-full shadow-md hover:bg-opacity-100 transition"
+                  type="button"
+                  onClick={prevNovedad}
+                  className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-[#6b4f3b] bg-opacity-80 text-white p-3 rounded-full shadow-md hover:bg-opacity-100 transition"
                   >
-                    &lt;
+                  &lt;
                   </button>
                   <button
-                    type="button"
-                    onClick={nextNovedad}
-                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-[#6b4f3b] bg-opacity-80 text-white p-3 rounded-full shadow-md hover:bg-opacity-100 transition"
+                  type="button"
+                  onClick={nextNovedad}
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-[#6b4f3b] bg-opacity-80 text-white p-3 rounded-full shadow-md hover:bg-opacity-100 transition"
                   >
-                    &gt;
+                  &gt;
                   </button>
                 </div>
                 <div className="mt-8 text-center">
                   <h3 className="text-2xl font-playfair font-bold text-[#4e3a2e] mb-2">
-                    {novedades[novedadIndex].title}
+                  {novedades[novedadIndex].title}
                   </h3>
                   <p className="text-[#6b4f3b] font-montserrat leading-relaxed text-lg mb-4">
-                    {novedades[novedadIndex].description}
+                  {novedades[novedadIndex].description}
                   </p>
                   <a
-                    href={getWhatsAppLink(novedades[novedadIndex].title)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block bg-amber-800 hover:bg-amber-700 text-white px-4 py-2 rounded transition-colors font-montserrat text-sm"
+                  href={getWhatsAppLink(novedades[novedadIndex].title)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-amber-800 hover:bg-amber-700 text-white px-4 py-2 rounded transition-colors font-montserrat text-sm"
                   >
-                    Solicitar más info
+                  Solicitar más info
                   </a>
                 </div>
+                </div>
               </div>
-            </div>
-          </section>
-        );
-      };
+              </section>
+            );
+            };
 
       const ProductCatalog = () => {
         const [dolarBlue, setDolarBlue] = useState(null);
