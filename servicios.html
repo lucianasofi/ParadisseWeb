@@ -474,7 +474,7 @@
               </div>
             </div>
 
-            {/* Llamada a la acción */}
+        
             <div className="text-center mt-16 fade-in">
               <h3 className="text-3xl font-playfair font-bold text-stone-900 mb-6">
                 ¿Listo para transformar tu espacio?
@@ -505,6 +505,7 @@
               />
               <span>Paradisse Design</span>
             </div>
+            <p>&copy; <span id="year"></span> Paradisse Design. Todos los derechos reservados.</p>
             <nav className="flex gap-3">
               <a
                 href="https://www.instagram.com/paradisse.design"
@@ -550,9 +551,11 @@
           { threshold: 0.15 }
         );
 
-        const elementsToAnimate = document.querySelectorAll(".fade-in, .slide-left, .slide-right, .zoom-in");
+        const elementsToAnimate = 
+        document.querySelectorAll(".fade-in, .slide-left, .slide-right, .zoom-in");
         elementsToAnimate.forEach((el) => {
           observer.observe(el);
+            document.getElementById("year").textContent = new Date().getFullYear();
         });
       }, 100);
     </script>

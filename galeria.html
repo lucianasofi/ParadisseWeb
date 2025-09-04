@@ -705,6 +705,7 @@
               />
               <span>Paradisse Design</span>
             </div>
+            <p>&copy; <span id="year"></span> Paradisse Design. Todos los derechos reservados.</p>
             <nav className="flex gap-4">
               <a
                 href="https://www.instagram.com/paradisse.design"
@@ -729,7 +730,7 @@
 
       const App = () => {
         useEffect(() => {
-          // IntersectionObserver para animaciones
+        
           const observer = new IntersectionObserver(
             (entries) => {
               entries.forEach((entry) => {
@@ -742,15 +743,16 @@
             { threshold: 0.15 }
           );
 
-          // Observar elementos con animaciones
+        
           const animatedElements = document.querySelectorAll(
             ".fade-in, .slide-left, .slide-right, .zoom-in"
           );
           animatedElements.forEach((el) => {
             observer.observe(el);
+              document.getElementById("year").textContent = new Date().getFullYear();
           });
 
-          // Cleanup
+          
           return () => {
             animatedElements.forEach((el) => {
               observer.unobserve(el);
@@ -767,7 +769,7 @@
         );
       };
 
-      // Renderizar la aplicación
+    
       const root = ReactDOM.createRoot(document.getElementById("root"));
       root.render(<App />);
     </script>

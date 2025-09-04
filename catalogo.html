@@ -564,10 +564,9 @@ Me gustaría conocer:
               />
               <span>Paradisse Design</span>
             </div>
+            <p>&copy; <span id="year"></span> Paradisse Design. Todos los derechos reservados.</p>
             <div className="mt-2 pt-2 text-center">
-              <p className="text-stone-400 font-montserrat text-sm">
-                © 2025 Paradisse Design. Todos los derechos reservados.
-              </p>
+
             </div>
             <nav className="flex gap-4">
               <a
@@ -620,6 +619,7 @@ Me gustaría conocer:
           .querySelectorAll(".fade-in, .slide-left, .slide-right, .zoom-in")
           .forEach((el) => {
             observer.observe(el);
+             document.getElementById("year").textContent = new Date().getFullYear();
           });
       }, 100);
     </script>
