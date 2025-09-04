@@ -367,31 +367,31 @@
 
     
       const CurrencySwitcher = ({ currency, setCurrency }) => (
-        <div className="flex justify-end items-center mb-6 mt-4">
+        <div className="flex justify-center items-center mb-6 mt-4">
           <span className="mr-2 font-semibold text-primary-contrast">
-            Moneda:
+        Moneda:
           </span>
           <button
-            className={`px-3 py-1 rounded-l border border-primary-accent ${
-              currency === "ARS"
-                ? "bg-primary-accent text-white"
-                : "bg-primary-light text-primary-contrast"
-            } transition-colors`}
-            onClick={() => setCurrency("ARS")}
-            aria-pressed={currency === "ARS"} 
+        className={`px-3 py-1 rounded-l border border-primary-accent ${
+          currency === "ARS"
+            ? "bg-primary-accent text-white"
+            : "bg-primary-light text-primary-contrast"
+        } transition-colors`}
+        onClick={() => setCurrency("ARS")}
+        aria-pressed={currency === "ARS"} 
           >
-            Pesos
+        Pesos
           </button>
           <button
-            className={`px-3 py-1 rounded-r border border-primary-accent ${
-              currency === "USD"
-                ? "bg-primary-accent text-white"
-                : "bg-primary-light text-primary-contrast"
-            } transition-colors`}
-            onClick={() => setCurrency("USD")}
-            aria-pressed={currency === "USD"} 
+        className={`px-3 py-1 rounded-r border border-primary-accent ${
+          currency === "USD"
+            ? "bg-primary-accent text-white"
+            : "bg-primary-light text-primary-contrast"
+        } transition-colors`}
+        onClick={() => setCurrency("USD")}
+        aria-pressed={currency === "USD"} 
           >
-            USD
+        USD
           </button>
         </div>
       );
@@ -516,7 +516,7 @@ Me gustaría conocer:
             description:
               "Diseño limpio y moderno, ideal para espacios contemporáneos.",
             dimensions: "Largo: 240cm, Alto: 220cm",
-            price: 350000,
+            price: 3700000,
           },
           {
             id: 2,
@@ -525,7 +525,7 @@ Me gustaría conocer:
             description:
               "Combinación de metal y madera, estilo robusto y funcional.",
             dimensions: "Largo: 250cm, Alto: 230cm",
-            price: 420000,
+            price: 6200000,
           },
           {
             id: 3,
@@ -534,7 +534,7 @@ Me gustaría conocer:
             description:
               "Líneas suaves y tonos claros, aporta calidez y luminosidad.",
             dimensions: "Largo: 260cm, Alto: 225cm",
-            price: 390000,
+            price: 4500000,
           },
           {
             id: 4,
@@ -543,7 +543,7 @@ Me gustaría conocer:
             description:
               "Optimiza el espacio y crea un ambiente ligero y sofisticado.",
             dimensions: "Largo: 270cm, Alto: 240cm",
-            price: 370000,
+            price:7600000 ,
           },
           {
             id: 5,
@@ -552,17 +552,61 @@ Me gustaría conocer:
             description:
               "Elegancia atemporal con detalles tallados y acabados refinados.",
             dimensions: "Largo: 245cm, Alto: 235cm",
-            price: 410000,
+            price: 3400000,
           },
           {
             id: 6,
             name: "Rack TV Modular",
             image: "images/catalogo/racktv_c6.jpg",
             description:
-              "Versatilidad y personalización para adaptarse a cualquier espacio.",
+              "Versatilidad y funcionalidad, adaptándose a tus necesidades.",
             dimensions: "Largo: 255cm, Alto: 220cm",
-            price: 430000,
+            price: 4300000,
           },
+          {
+            id: 7,
+            name: "Rack TV Rústico",
+            image: "images/catalogo/racktv_c7.jpg",
+            description:
+              "Materiales naturales y acabados envejecidos, estilo acogedor.",
+            dimensions: "Largo: 265cm, Alto: 230cm",
+            price: 2900000,
+          },
+          {
+            id: 8,
+            name: "Rack TV Contemporáneo",
+            image: "images/catalogo/racktv_c8.jpg",
+            description:
+              "Diseño innovador con formas geométricas y colores audaces.",
+            dimensions: "Largo: 275cm, Alto: 240cm",
+            price: 6800000,
+          },
+          {
+            id: 9,
+            name: "Rack TV Elegante",
+            image: "images/catalogo/racktv_c9.jpg",
+            description:
+              "Combinación de lujo y funcionalidad, ideal para espacios sofisticados.",
+            dimensions: "Largo: 280cm, Alto: 250cm",
+            price: 4300000,
+          },
+          { id: 10,
+            name: "Rack TV Vintage",
+            image: "images/catalogo/racktv_c10.jpg",
+            description:
+              "Hecho de total melamina, elegante, clásico y funcional.",
+            dimensions: "Largo: 290cm, Alto: 260cm",
+            price: 2700000,
+          },
+          
+          { id: 11,
+            name: "Rack TV Ecléctico",
+            image: "images/catalogo/racktv_c11.jpg",
+            description:
+              "Mezcla de estilos y materiales, ideal para espacios únicos y personalizados.",
+            dimensions: "Largo: 300cm, Alto: 270cm",
+            price: 6400000,
+          }
         ];
 
         const kitchens = [
@@ -772,8 +816,21 @@ Me gustaría conocer:
      
       ReactDOM.render(<App />, document.getElementById("root"));
 
-    
-      const setupAnimations = () => {
+  // Leyenda de precios en efectivo
+  const cashLegend = document.createElement("div");
+  cashLegend.textContent = "Todos los precios publicados son en efectivo.";
+  cashLegend.style.textAlign = "center";
+  cashLegend.style.fontSize = "0.95rem";
+  cashLegend.style.color = "#6e6657";
+  cashLegend.style.margin = "18px 0 0 0";
+  cashLegend.style.fontFamily = "Montserrat, sans-serif";
+  const footer = document.querySelector("footer");
+  if (footer) {
+    footer.parentNode.insertBefore(cashLegend, footer);
+  } else {
+    document.body.appendChild(cashLegend);
+  }
+  const setupAnimations = () => {
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
